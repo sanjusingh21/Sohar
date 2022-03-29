@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRS INDIVIDUAL</title>
+    <style>
+        *{
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            font-size: 14px;
+        }
+        .br{
+            border-right: 1px solid rgb(75, 75, 75); 
+        }
+        .bb{
+            border-bottom: 1px solid #000; 
+        }
+        .color-1{
+            color: #ed7314;
+        }
+        input{
+            border: 0;
+        }
+        .w-100{
+            width: 100%;
+        }
+        p{
+            line-height: 18px;
+        }
+        p.color-1{
+            margin: 7px 0px 1px 0px;
+            font-weight: 600;
+        }
+        p.bb{
+            padding: 7px 0px 5px 0px;
+            margin-bottom: 5px;
+        }
+        .my-table td{
+            vertical-align: top;
+            padding: 5px 0px;
+        }
+        .my-table td:nth-child(3){
+            vertical-align: bottom;
+        }
+        .my-table p.color-1{
+            margin-bottom: 0 !important;
+        }
+        .input-box {
+            width: 20px;
+            padding: 5px;
+            min-height: 13px;
+            display: inline-block;
+            border: 1px solid #ed7314;
+            margin-left: -5px;
+        }
+    </style>
+</head>
+<body>
+    <p style="text-align: center;">
+		<img
+			src="data:image/png;base64,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"
+			alt="" width="400px">
+    </p>
+    <h1 class="color-1" style="float: right;margin-top: -80px;">CRS-E</h1>
+    <h3 style="border-top: 1px solid #ed7314;border-bottom: 1px solid #ed7314; padding: 7px 0px; text-align: center; margin-top: 10px; ">Entity tax residency self-certification form Instructions</h3>
+    <table style="width: 100%; border-collapse: collapse;"> 
+        <tbody>
+            <tr>
+                <td style="width: 50%; padding-right: 10px; text-align: justify; vertical-align: top; padding-top: 10px;">
+                    <p class="color-1" style="margin-top: 0;">Please read these instructions before completing the form</p>
+                    <p>“Regulations based on the OECD Common Reporting Standard (“CRS”)”] require Sohar
+                        International Bank SAOG to collect and report certain information about an account
+                        holder’s tax residency. If the account holder’s tax residence is located outside the
+                        Sultanate of Oman we may be legally obliged to pass on the information in this form and
+                        other financial information with respect to your financial accounts to the relevant local
+                        tax authority in the Sultanate of Oman and they may exchange this information with
+                        tax authorities of another jurisdiction or jurisdictions pursuant to intergovernmental
+                        agreements to exchange financial account information</p>
+                    <p>You can find summaries of defined terms such as an account holder, and other terms,
+                        in the Appendix.</p>
+                    <p>This form will remain valid unless there is a change in circumstances relating to
+                        information, such as the acount holder’s tax status or other mandatory field information,
+                        that makes this form incorrect or incomplete. In that case you must notify us and provide
+                        an updated self-certification.</p>
+                    <p>This form is intended to request information consistent with local law requirements</p>
+
+                    <h3 class="color-1" style="margin-top: 10px;">Please complete this form where you need to self-certify on behalf of an entity
+                        account holder</h4>
+                    <p>If you are an individual account holder or sole trader or sole proprietor do not complete
+                        this form. Instead please complete an “Individual tax residency self-certification form.”
+                        For joint or multiple account holders please complete a separate form for each account
+                        holder</p>
+
+                    
+                </td>
+                <td style="padding-left: 10px; text-align: justify; vertical-align: top; padding-top: 10px;">
+                    <p>If the Account Holder is a U.S. tax resident under U.S. law, you should indicate that the
+                        account holder is a U.S. tax resident on this form and you may also need to fill in an IRS
+                        W-9 form. For more information on tax residence, please consult your tax adviser or the
+                        information at the <b>OECD automatic exchange of information portal.</b></p>
+
+                    <h3 class="color-1" style="margin-top: 10px;">Where the Account Holder is a Passive NFE, or an Investment Entity located in a
+                        Non-Participating Jurisdiction managed by another Financial Institution</h3>
+                    <p>Please provide information on the natural person(s) who exercise control over the
+                        Account Holder (individuals referred to as “Controlling Person(s)”) by completing a
+                        “Controlling Person tax residency self-certification form” for each Controlling Person.
+                        This information should be provided by all Investment Entities located in a NonParticipating Jurisdiction and managed by another Financial Institution</p>
+                    <p>You should indicate the capacity in which you have signed in Part 4. For example you
+                        may be the custodian or nominee of an account on behalf of the account holder, or you
+                        may be completing the form under a signatory authority or power of attorney</p>
+
+                    <h3 class="color-1" style="margin-top: 10px;">As a financial institution, we are not allowed to give tax advice.</h3>
+                    <p>Your tax adviser may be able to assist you in answering specific questions on this form.
+                        Your domestic tax authority can provide guidance regarding how to determine your tax
+                        status.</p>
+                    <p>You can also find out more, including a list of jurisdictions that have signed agreements
+                        to automatically exchange information, along with details about the information being
+                        requested, on the <b>OECD automatic exchange of information portal.</b> </p>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h3 class="color-1" style="padding-top: 35px;">Entity tax residency self-certification FORM</h3>
+                    <h4 style="padding-bottom: 15px;">(please complete parts 1-3 in BLOCK CAPITALS)</h4>
+
+                    <p class="color-1">Part 1 - Identification of Account Holder</p>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table style="width: 100%; border-collapse: collapse;" class="my-table">
+                        <tbody>
+                            <tr>
+                                <td style="width: 20px;"><p class="color-1"><b>A. </b></p></td>
+                                <td style="width: 40%;"><p class="color-1">Legal Name of Entity/Branch* </p></td>
+                                <td><input type="text" class="w-100 bb" ></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20px;"><p class="color-1"><b>B. </b></p></td>
+                                <td style="width: 40%;"><p class="color-1">Country of incorporation or organisation </p></td>
+                                <td><input type="text" class="w-100 bb" ></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20px;"><p class="color-1"><b>C.</b></p></td>
+                                <td style="width: 40%;"><p class="color-1">Current Residence Address:</p></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Line 1 (e.g. House/Apt/Suite Name,</td>
+                                <td><input type="text" class="w-100 bb" ></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Number, Street, if any)*</td>
+                                <td><input type="text" class="w-100 bb" ></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Line 2 (e.g. Town/City/Province/County/State)*</td>
+                                <td><input type="text" class="w-100 bb" ></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Country*</td>
+                                <td><input type="text" class="w-100 bb" ></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Postal Code/ZIP Code (if any)*</td>
+                                <td><input type="text" class="w-100 bb" ></td>
+                            </tr>
+                            <tr>
+                                <td><p class="color-1"><b>D.</b></p></td>
+                                <td colspan="2"><p class="color-1">Mailing Address <span style="color: rgb(58, 58, 58);">(please only complete if different to the address shown in Section C)</span></p></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Line 1 (e.g. House/Apt/Suite Name, Number, Street)</td>
+                                <td><input type="text" class="w-100 bb" ></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Line 2 (e.g. Town/City/Province/County/State)</td>
+                                <td><input type="text" class="w-100 bb" ></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Country</td>
+                                <td><input type="text" class="w-100 bb" ></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Postal Code/ZIP Code</td>
+                                <td><input type="text" class="w-100 bb" ></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p style="margin-top: 10px;"><b> <span class="color-1">Part 2 - Entity Type</span><br/>Please provide the Account Holder’s Status by ticking one of the following boxes </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                   <table style="width: 100%;">
+                        <tbody style="vertical-align: top;">
+                            <tr>
+                                <td class="color-1">1. (a) </td>
+                                <td>
+                                    <b class="color-1">Financial Institution</b>  – Investment Entity
+                                    <table style="width: 100%;">
+                                        <tbody style="vertical-align: top;">
+                                            <tr style="vertical-align: top;">
+                                                <td style="width: 90%;">i. An Investment Entity located in a Non-Participating Jurisdiction and managed by another Financial Institution
+                                                    (Note: if ticking this box please also complete Part 2(2) below)</td>
+                                                <td><img style="width: 15px; margin-left: 7px; vertical-align: middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALsAAAC7CAYAAAA9kO9qAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA1ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0iMjUxMDc0RDQwMjFBODhFQjY3MjUyNjc2MjVERDc2MkUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODg2NjM4Q0NGMTlGMTFFQUI0MjVDMjRDOTM0RDAwNTUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODg2NjM4Q0JGMTlGMTFFQUI0MjVDMjRDOTM0RDAwNTUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEMzA3MjNFMUZFRjBFQTExOTJDMTlDMTk0REVFQzZBQSIgc3RSZWY6ZG9jdW1lbnRJRD0iMjUxMDc0RDQwMjFBODhFQjY3MjUyNjc2MjVERDc2MkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4g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" alt="">
+                                                </td>
+                                            </tr>
+                                            <tr style="vertical-align: top;">
+                                                <td>ii. Other Investment Entity</td>
+                                                <td><img style="width: 15px; margin-left: 7px; vertical-align: middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALsAAAC7CAYAAAA9kO9qAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA1ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0iMjUxMDc0RDQwMjFBODhFQjY3MjUyNjc2MjVERDc2MkUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODg2NjM4Q0NGMTlGMTFFQUI0MjVDMjRDOTM0RDAwNTUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODg2NjM4Q0JGMTlGMTFFQUI0MjVDMjRDOTM0RDAwNTUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEMzA3MjNFMUZFRjBFQTExOTJDMTlDMTk0REVFQzZBQSIgc3RSZWY6ZG9jdW1lbnRJRD0iMjUxMDc0RDQwMjFBODhFQjY3MjUyNjc2MjVERDc2MkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4g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" alt="">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="color-1">(b)</td>
+                                <td><b class="color-1">Financial Institution</b> – Depository Institution, Custodial Institution or Specified Insurance Company
+                                    <table style="width: 100%;">
+                                        <tbody style="vertical-align: top;">
+                                            <tr style="vertical-align: top;">
+                                                <td style="width: 90%;"> If you have ticked (a) or (b) above, please provide, if held, the Account Holder’s Global Intermediary Identification
+                                                    Number (“GIIN”) obtained for FATCA purposes.</td>
+                                                <td><img style="width: 15px; margin-left: 7px; vertical-align: middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALsAAAC7CAYAAAA9kO9qAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA1ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0iMjUxMDc0RDQwMjFBODhFQjY3MjUyNjc2MjVERDc2MkUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODg2NjM4Q0NGMTlGMTFFQUI0MjVDMjRDOTM0RDAwNTUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODg2NjM4Q0JGMTlGMTFFQUI0MjVDMjRDOTM0RDAwNTUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEMzA3MjNFMUZFRjBFQTExOTJDMTlDMTk0REVFQzZBQSIgc3RSZWY6ZG9jdW1lbnRJRD0iMjUxMDc0RDQwMjFBODhFQjY3MjUyNjc2MjVERDc2MkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5h3HM7AAALRElEQVR42uydfXAU5R3Hd+8lkBYMIlBMWpA2M8GAVKBQyAQCMkFSqFDkRd5UcMCCwPBe0BRbB8EWKSCdQLWZggyBaCnIiyBhNCFRXjQtbUKEGmhlDC8TSBthmpBwt73nLhuP4152Q17udj+ffy6529vdPPvd731/v31uIyuKIjUGx/Jyo88WFyYWFxak/Pf65YSqyivJdqkmUQLQwW3FetHS6r6i9p0fOt7hO98rHT56yp7k5EE1jbFu+V7EnvPBoZhDf9k67cq5/E0cJmhKnFH3HxyUNvXVFxauON6sYt+7Ozsu640lJ22yI059rlaxlcqSEm2RnDEWWWnD4YHGoFZqXWhVqhMtshStPvdg98Fz1m3ZtbnJxT4+pcsFu3y7m/jZocgVVllpzyGBZow5ZarJxvd74qlX1m7JbnSxr165eGTxsZ0H1Fzl2mAXhh5aCpfRVrqMNkb8PH1FZrvUx9MqG0Xs44d8/zO7VN0XkUO4Mmjsgh/Pnr/s1D2JffKQWMWTyaNK7DLdFQjHXN/qtF269ehDvdOeXr0+c3uDxK4K3fsjAyAsBa/YSl21ZHxi8oTR6as27NMldlXorpdrZFmK0rtxRZwjrve6NuGo+72GQwKhdSM7rLKzvSxJVt3Fq9NyxWZxdu43YuaQhct/nef7us3fm54Zk5RR5+iauy1C3E7PJ4B7ebGzsrtdpHAEQZ9N+hGwlneK5WoV+7lPD7+Vm9N7wF1F613Ovun1VcnHD2Tk6ylGvWOO/K3OWQ/3GZw9OHVMTlRUK9engtz8w1X3N6nbFr/7+9nf7825j8H2T8t+Nde+e++T97g2ZL+07POF0pJuue/vmvZ1WfFyNVUIM9Xr9lm5l+SgYlfji15CFQcADeHjjwuitry2KMNx46vn9L63Y3zSgo1//PNGv2JfOGvC3Kv/LNikJ760je35yh+yjrzMYYGmJDtrW7f33lxxQXN+r7v45O3ud4hduLord98MdblfPRkGjJo9aP6SXxZwKKC5GJ/S9axdrk3QUkOK2BPdMWFt5rsfLRPPWdQX5z83dpH7iRBCF2eMEPrAUXMQOjQ77+Z92V1MCvPk/8AdPjXfV5WfW6o+Vy/2a+dPrNNU8bo+GsSchHlL0hE6tAi7jpwZ5SmUg7fEhbuLx+Xzn322Xuzv7HzbPbFLXCUN2XmxtzusZ/INQFMwZXFGp1DLqO5+8R9H/lQv9qP7trsrXS3TAbJzStIYamhpRv50TLnotoQuVC3l4rGgID/KLfbKSyVztWzA3q7rZoYZwgW1rehUpKrAsdvZUTyePpXf1y32UPNeRPdFPI4YN/N3DDGEEw57zGHvL3YEouiz3BEWX7v3h0XydGgmTZ1RyvBCONFv6JNrPfq1lgVb7j9X/p1iydqeGe9t936DvqvqVVo9sIehhXBjwODH67qCStCpBDbnzRRLRflVt8jVNk0g2rTrdI6hhXBDvfOALCkhZ+Zarl39yv19PkWRq4It2LZdhzKGFsIV8WX/kGK/UVmhOjvzzcHQWL7dtl2FR+xyULFbbTZOBohI1NakhaEAgwQZR6jXvhE7XygCo8cYr4QPEMEoVu1iD+HsCs4PERpj1LY6mR1MGGMAEDtAhAecunntiB2MX7reldnpxgAxpu5c4GQAw8QYWosQ2WFFR589pLNbHAwohK17B73TgGLVldkVxWllSMEYmV0JXsni7BDprk/rEQxVhAZwbFqPYJozgW4MmDWzAxgVhVmPgLMDGF3sFKhAgQpgsswuMxMMDOPsoU4OvoQKhnF2jBtMU6ACmEbspBTA2SlQgQIVIEILVJwdcHacHYzm7DLODmYpUEPe2BRnB6OIncwOiB2AAhUAZwcIK/haHuDsAGYXO90YMI3YKVDBOGLnCioYFb1fuMbZIWJh1iMQYwAML3ZSCpgms4f8zxucDWCUzI6WwTTODmAaZwcwTYEKgNgBEDuAMcXOFVQwjdjps0PEorf1iLMDzg5AZgcIE7ioBGR2Ygzg7AAmyewAxokx1J9gmhhDJAdiDIDRYgyAaWIMmR1ME2NCZHauoIJpYgwXlYACFSDiMjsAzg6A2AGMKXa6MWAasdONgYiFiWBgXmfnohIYFaYLgHljDP9TCShQARA7AJkdAGcHCAuxU3+CacROjAGjorf1yEUlME1mp88OFKgA4Y7ebyoRY8A4mR0AZyezA5kdIELFTiQH04idlALEGADEDoDYARA7QEvARSUwDdzYFHB2ALM7OxPBwDQFKnNjwDRiBzBOZpeJMWCWzM7t74AYA4DYASJU7ERyMI3YieSAswOYzNlpPYJpnJ3WI0Qseu/1CGAcZwdA7AAmy+wUqBCxcPs7MK+zo2UgswMgdoDIQO+XNwCMU6CS2cE0zg5AZgcwWowhs4NpYgyZHYgxAEaLMQCmcXYmgoFpxM5NksA0BWqo5XF2MEtmx9nBODEGZwfEjrODycQOgNgBwh1mPYJp0NqNcZWlVgpUCHecinwzoIZlKcot9p59kk7VPeMItrILxQWzGVIINz768Ggbt9gluSpkZp8w6el/eZxergm2oF2p7nvyxAkrwwvhRP7RfameiKJEB1uuVm5dWB9jbPLtLoEWdChyhXg8/8WZbgwvhBNFnxx4yS12WWkTbLm4+D7bLZ68I1Wp2dwfVllpLx7379i4huGFcMIuVfetVaJKAtemnuL0BwmPepz9wYTkZVpWLFdfG/fBoQPtGWIIB2aMS1mnKFKNXa5JDFK4VorHeUvSC9xi/9mUOZni8bZivRhqA5lrfn6GYYaWZv/e3Z2rr32xSO20BEsl4oTw5HoXg1OGVHlyu6NLqI3YLM7O6YtmTma4oSXZuWHeZa3LxvUYOq9e7ILE5ImjtbzR5f5lF/56cMfmjb/pz5BDSzAxJe66luXU3vvrGTvevEPs6avW7xOPaucloLPLjjgR+vP3bDy5euXikQw9NCeTh8QqasMkFKJD43L15+t/97H758WKaqWooqCFqisKibOm+NjOA8+MScrgEEBTsy0zI1EIXevytYrNff1oaNr4PfW69Z26q2eFwuHVlmXXHw6fvmbj1q0cFmhMDu7f23Hb+iXv2Zz/Gyha5BZZitYStUUC6dJr+PTX3vhGk3eJffc7O7rszlj6Za3Uqsgu3XpESy5ySpZKsfK6M6r0R49Nmhf/cK+SDp1iy2trbkWJbQSaW+P9mvqz73PuHfVZxvf9/h7r/0if5X2fC7Ye39cCftr52Yb3a97b9bcef3+v78+B1hPo7wu2H/7GNND2/I13oLHzNx7Bjq3v+2pcevm6siIm9/3saTcuFa30EvBFLQ0Ub7JyL92xE7K/gZ81KXXVzctnXtKzYuHyosWj5cwD0Ipekavu7yv0gGIXjE/petYu1ybcVizlNtnZUc/GOETQUFxeX+Xy+uiGmOZtp+WKaI33GT5j2JIXV32oWeze+V1ElVBzDwBa9hPAY8r9fzJryIJlv8rz253RknmE0MXKGFIIR0S7XAi919CpaYGEHlLsquCt9303U6xMy3QCgGYUuXvei2iXD3vqF72Xv/zbw8GWl7XeNWDtqhdT/3Z06xF3x0WKKrJLNY8w3NASiLrQKVkrRAdQuHp2XtkDWt6n+TuoS9NX58xc+XZbhz3msCr0WsV+jqGH5hS5uFgkilch9KQn5iZpFbouZ/dm7+7suOy3Xt0gpvx+syN39tsBmoruA58cu3LNpj163yffy82PsrZnxhd+cjT18ud5TBmAJsXSJnbr4LRJv5/1wuLChq5Dbsw7fYlLu3//NL//xfMlfa+XfT7RFXcSOUygB9H1s7a+vyC2W4+crvE9inr2HnD6sWGpNxtj3f8XYABVpo5xrAzm6wAAAABJRU5ErkJggg==" alt="">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                   </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="input-box" style="margin-left: 10px;">1</span>
+                    <span class="input-box">1</span>
+                    <span class="input-box">1</span>
+                    <span class="input-box">1</span>
+                    <span class="input-box">1</span>
+                    <span class="input-box">1</span>
+                    <span class="input-box">1</span>
+                    <span class="input-box">1</span>
+                    <span class="input-box">1</span>
+                    <span class="input-box">1</span>
+                    <span class="input-box">1</span> 
+                    <span class="input-box">1</span> 
+                </td>
+                <td>
+                    <span class="input-box">1</span>
+                    <span class="input-box">1</span>
+                    <span class="input-box">1</span>
+                    <span class="input-box">1</span>
+                    <span class="input-box">1</span> 
+                    <span class="input-box">1</span> 
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                   <table style="width: 100%;">
+                        <tbody style="vertical-align: top;">
+                            <tr>
+                                <td class="color-1">(c) </td>
+                                <td>
+                                    <table style="width: 100%;">
+                                        <tbody style="vertical-align: top;">
+                                            <tr style="vertical-align: top;">
+                                                <td style="width: 90%;"><b class="color-1">Active NFE</b> – a corporation the stock of which is regularly traded on an established securities market or a corporation which is a related
+                                                    entity of such a corporation</td>
+                                                <td>
+                                                    <img style="width: 15px; margin-left: 7px; vertical-align: middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALsAAAC7CAYAAAA9kO9qAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA1ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0iMjUxMDc0RDQwMjFBODhFQjY3MjUyNjc2MjVERDc2MkUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODg2NjM4Q0NGMTlGMTFFQUI0MjVDMjRDOTM0RDAwNTUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODg2NjM4Q0JGMTlGMTFFQUI0MjVDMjRDOTM0RDAwNTUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEMzA3MjNFMUZFRjBFQTExOTJDMTlDMTk0REVFQzZBQSIgc3RSZWY6ZG9jdW1lbnRJRD0iMjUxMDc0RDQwMjFBODhFQjY3MjUyNjc2MjVERDc2MkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4g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" alt="">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">If you have ticked (c), please provide the name of the established securities market on which the corporation
+                                                    is regularly traded: <span class="bb" style="display:inline-block; width:50%"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">If you are a Related Entity of a regularly traded corporation, please provide the name of the regularly traded
+                                                    corporation that the Entity in (c) is a Related Entity of: <span class="bb" style="display:inline-block; width:50%"></span></td>
+                                                    </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                   </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td class="color-1" style="width: 20px;">(d) </td>
+                                <td><b class="color-1">Active NFE </b>– a Government Entity or Central Bank</td>
+                                <td>
+                                    <img style="width: 15px; margin-left: 7px; vertical-align: middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALsAAAC7CAYAAAA9kO9qAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA1ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0iMjUxMDc0RDQwMjFBODhFQjY3MjUyNjc2MjVERDc2MkUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODg2NjM4Q0NGMTlGMTFFQUI0MjVDMjRDOTM0RDAwNTUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODg2NjM4Q0JGMTlGMTFFQUI0MjVDMjRDOTM0RDAwNTUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEMzA3MjNFMUZFRjBFQTExOTJDMTlDMTk0REVFQzZBQSIgc3RSZWY6ZG9jdW1lbnRJRD0iMjUxMDc0RDQwMjFBODhFQjY3MjUyNjc2MjVERDc2MkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4g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" alt="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="color-1">(e) </td>
+                                <td style="width: 89%;"><b class="color-1">Active NFE </b>– an International Organisation</td>
+                                <td>
+                                    <img style="width: 15px; margin-left: 7px; vertical-align: middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALsAAAC7CAYAAAA9kO9qAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA1ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0iMjUxMDc0RDQwMjFBODhFQjY3MjUyNjc2MjVERDc2MkUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODg2NjM4Q0NGMTlGMTFFQUI0MjVDMjRDOTM0RDAwNTUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODg2NjM4Q0JGMTlGMTFFQUI0MjVDMjRDOTM0RDAwNTUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEMzA3MjNFMUZFRjBFQTExOTJDMTlDMTk0REVFQzZBQSIgc3RSZWY6ZG9jdW1lbnRJRD0iMjUxMDc0RDQwMjFBODhFQjY3MjUyNjc2MjVERDc2MkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4g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" alt="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="color-1">(f)</td>
+                                <td><b class="color-1">Active NFE   </b>– other than (c)-(e) (for example a start-up NFE or a non-profit NFE)</td>
+                                <td>
+                                    <img style="width: 15px; margin-left: 7px; vertical-align: middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALsAAAC7CAYAAAA9kO9qAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA1ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0iMjUxMDc0RDQwMjFBODhFQjY3MjUyNjc2MjVERDc2MkUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODg2NjM4Q0NGMTlGMTFFQUI0MjVDMjRDOTM0RDAwNTUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODg2NjM4Q0JGMTlGMTFFQUI0MjVDMjRDOTM0RDAwNTUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEMzA3MjNFMUZFRjBFQTExOTJDMTlDMTk0REVFQzZBQSIgc3RSZWY6ZG9jdW1lbnRJRD0iMjUxMDc0RDQwMjFBODhFQjY3MjUyNjc2MjVERDc2MkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4g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" alt="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="color-1">(g)</td>
+                                <td><b class="color-1">Passive NFE </b> (Note: if ticking this box please also complete Part 2(2) below)</td>
+                                <td>
+                                    <img style="width: 15px; margin-left: 7px; vertical-align: middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALsAAAC7CAYAAAA9kO9qAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA1ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0iMjUxMDc0RDQwMjFBODhFQjY3MjUyNjc2MjVERDc2MkUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODg2NjM4Q0NGMTlGMTFFQUI0MjVDMjRDOTM0RDAwNTUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODg2NjM4Q0JGMTlGMTFFQUI0MjVDMjRDOTM0RDAwNTUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEMzA3MjNFMUZFRjBFQTExOTJDMTlDMTk0REVFQzZBQSIgc3RSZWY6ZG9jdW1lbnRJRD0iMjUxMDc0RDQwMjFBODhFQjY3MjUyNjc2MjVERDc2MkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4g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" alt="">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                   <b class="color-1">2. If you have ticked 1(a)(i) or 1(g) above, then please:</b>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding-left:15px">
+                   <b class="color-1">a. Indicate the name </b>of any Controlling Person(s) of the Account Holder:*
+                   <div style="width:100%; min-height:70px; border:1px solid #000;">
+
+                   </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding-left:15px">
+                   <b class="color-1">b. Complete </b>“Controlling Person tax residency self-certification form” for each Controlling Person.*
+                   Please see the definition of Controlling Person in Appendix
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding-top:20px;">
+                    <p style="margin-top: 10px;"><b> <span class="color-1">Part 3 – Country/Jurisdiction of Residence for Tax Purposes and related Taxpayer Identification Number or
+                        functional equivalent* (“TIN”)</span><span> (see Appendix)</span> </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 50%; padding-right: 10px; text-align: justify; vertical-align: top; padding-top: 10px;">
+                    <p>Please complete the following table indicating (i) where the
+                        Account Holder is tax resident and (ii) the Account Holder’s TIN
+                        for each country/Reportable Jurisdiction indicated. Countries/
+                        Jurisdictions adopting the wider approach may require that
+                        the self-certification include a tax identifying number for each
+                        jurisdiction of residence (rather than for each Reportable
+                        Jurisdiction).</p>
+                    <p>If the Account Holder is not tax resident in any country/
+                        jurisdiction (e.g., because it is fiscally transparent), please
+                        indicate that on line 1 and provide its place of effective
+                        management or jurisdiction in which its principal office is located.</p>
+                </td>
+                <td style="padding-left: 10px; text-align: justify; vertical-align: top; padding-top: 10px;">
+                    <p>If the Account Holder is tax resident in more than three countries/
+                        jurisdictions, please use a separate sheet</b> </p>
+                    <p>If a TIN is unavailable please provide the appropriate reason <b>A, B or C where
+                        appropriate:</b></p>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr>
+                            <td style="width: 100px; vertical-align: top;"><b>Reason A - </b></td>
+                            <td>The country/jurisdiction where the Account Holder is resident
+                                does not issue TINs to its residents </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 100px; vertical-align: top;"><b>Reason B –</b></td>
+                            <td>The Account Holder is otherwise unable to obtain a TIN or
+                                equivalent number (Please explain why you are unable to obtain
+                                a TIN in the below table if you have selected this reason)</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 100px; vertical-align: top;"><b>Reason C –</b></td>
+                            <td>No TIN is required. (Note. Only select this reason if the domestic
+                                law of the relevant jurisdiction does not require the collection of
+                                the TIN issued by such jurisdiction)</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" >
+                    <table style="width: 100%; border-collapse: collapse; border-color: #ed7314; margin-top: 10px;" border="1" cellpadding="5px" >
+                        <tbody>
+                            <tr>
+                                <th colspan="2">Country/Jurisdiction of tax
+                                    residence</th>
+                                <th>TIN</th>
+                                <th>If no TIN available enter
+                                    Reason A,B or C</th>
+                            </tr>
+                            <tr>
+                                <td style="width: 15px;">1</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Please explain in the following boxes why you are unable to obtain a TIN if you selected Reason B above.</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" >
+                    <table style="width: 100%; border-collapse: collapse; border-color: #ed7314; margin-top: 15px;" border="1" cellpadding="5px" >
+                        <tbody>
+                            <tr>
+                                <td style="width: 15px;">1</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p class="color-1"><b>Part 4 - Declaration and Signature*</b></p>
+                    <p>I understand that the information supplied by me is covered by the full provisions of the terms and conditions governing the
+                        Account Holder’s relationship with Sohar International Bank SAOG (the Bank) setting out how the Bank may use and share
+                        the information supplied by me.</p>
+                    <p>I acknowledge that the information contained in this form and information regarding the Account Holder and any Reportable
+                        Account(s) may be reported to the tax authorities of the country/jurisdiction in which this account(s) is/are maintained and
+                        exchanged with tax authorities of another country/jurisdiction or countries/jurisdictions in which the Account Holder may be
+                        tax resident pursuant to intergovernmental agreements to exchange financial account information.</p>
+                    <p>I certify that I am authorised to sign for the Account Holder in respect of all the account(s) to which this form relates.</p>
+                    <div style="border:1px solid #ed7314; padding: 10px; font-weight: 600;">
+                        <p>I declare that all statements made in this declaration are, to the best of my knowledge and belief, correct and complete.</p>
+                        <p>I undertake to advise the Bank within 30 days of any change in circumstances which affects the tax residency status
+                            of the Account Holder identified in Part 1 of this form or causes the information contained herein to become incorrect
+                            or incomplete (including any changes to the information on controlling persons identified in Part 2 question 2a),
+                            and to provide the Bank with a suitably updated self-certification and Declaration within 30 days of such change in
+                            circumstances.</p>
+                        <table style="width: 100%; border-collapse: collapse;" class="my-table">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 30%;">Signature:* </td>
+                                    <td><input type="text" class="w-100 bb" ></td>
+                                </tr>
+                                <tr>
+                                    <td>Print Name:*</td>
+                                    <td><input type="text" class="w-100 bb" ></td>
+                                </tr>
+                                <tr>
+                                    <td>Date:* (dd/mm/yyyy)</td>
+                                    <td><input type="text" class="w-100 bb" ></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><p>Note: Please indicate the capacity in which you are signing the form (for example ‘Authorised Officer’).
+                                        If signing under a power of attorney please also attach a certified copy of the power of attorney.</p></td>
+                                </tr>
+                                <tr>
+                                    <td>Capacity:*</td>
+                                    <td><input type="text" class="w-100 bb" ></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h2 class="color-1" style="margin-top: 30px;">Appendix – Summary Descriptions of Select Defined Terms</h2>
+                    <div style="border:1px solid #ed7314; padding: 10px; margin-top: 20px;">
+                        <b>Note:</b>   These are selected summaries of defined terms provided to assist you with the completion of this form. Further details can be found within the OECD
+                        “Common Reporting Standard for Automatic Exchange of Financial Account Information” (the “CRS”), the associated “Commentary” to the CRS, and
+                        domestic guidance. This can be found at the  <b>OECD automatic exchange of information portal.</b> 
+                        <br/>If you have any questions then please contact your tax adviser or domestic tax authority
+                    </div>
+                </td>
+            </tr>
+            <tr style="font-size: 14px;">
+                <td style="width: 50%; padding-right: 10px; text-align: justify; vertical-align: top; padding-top: 10px;">
+                    <p class="color-1"><b>Account Holder</b></p>
+                    <p>The “Account Holder” is the person listed or identified as the holder of a Financial
+                        Account by the Financial Institution that maintains the account. This is regardless of
+                        whether such person is a flow-through Entity. Thus, for example, if a trust or an estate
+                        is listed as the holder or owner of a Financial Account, the trust or estate is the Account
+                        Holder, rather than the trustee or the trust’s owners or beneficiaries. Similarly, if a
+                        partnership is listed as the holder or owner of a Financial Account, the partnership is
+                        the Account Holder, rather than the partners in the partnership. A person, other than a
+                        Financial Institution, holding a Financial Account for the benefit or account of another
+                        person as agent, custodian, nominee, signatory, investment advisor, or intermediary,
+                        is not treated as holding the account, and such other person is treated as holding the
+                        account.</p>
+                    <p class="color-1"><b>Active NFE</b></p>
+                    <p>An NFE is an Active NFE if it meets any of the criteria listed below. In summary, those
+                        criteria refer to:</p>
+                    <ul>
+                        <li>active NFEs by reason of income and assets;
+                        </li>
+                        <li>publicly traded NFEs;</li>
+                        <li>Governmental Entities, International Organisations, Central Banks, or their
+                            wholly owned Entities;</li>
+                        <li>holding NFEs that are members of a nonfinancial group;
+                        </li>
+                        <li>start-up NFEs;
+                        </li>
+                        <li>NFEs that are liquidating or emerging from bankruptcy;</li>
+                        <li>treasury centres that are members of a nonfinancial group; or</li>
+                        <li>non-profit NFEs</li>
+                    </ul>
+                    <p>An entity will be classified as Active NFE if it meets any of the following criteria:</p>
+                    <p>a) less than 50% of the NFE’s gross income for the preceding calendar year
+                        or other appropriate reporting period is passive income and less than 50%
+                        of the assets held by the NFE during the preceding calendar year or other
+                        appropriate reporting period are assets that produce or are held for the
+                        production of passive income;</p>
+                    <p>b) the stock of the NFE is regularly traded on an established securities market or
+                        the NFE is a Related Entity of an Entity the stock of which is regularly traded on
+                        an established securities market;</p>
+                    <p>c) the NFE is a Governmental Entity, an International Organisation, a Central
+                        Bank, or an Entity wholly owned by one or more of the foregoing;
+                        </p>
+                    <p>d) substantially all of the activities of the NFE consist of holding (in whole or in
+                        part) the outstanding stock of, or providing financing and services to, one or
+                        more subsidiaries that engage in trades or businesses other than the business
+                        of a Financial Institution, except that an Entity does not qualify for this status
+                        if the Entity functions (or holds itself out) as an investment fund, such as
+                        a private equity fund, venture capital fund, leveraged buyout fund, or any
+                        investment vehicle whose purpose is to acquire or fund companies and then
+                        hold interests in those companies as capital assets for investment purposes; </p>
+                    <p>e) the NFE is not yet operating a business and has no prior operating history, (a “
+                        start-up NFE”) but is investing capital into assets with the intent to operate a
+                        business other than that of a Financial Institution, provided that the NFE does
+                        not qualify for this exception after the date that is 24 months after the date of
+                        the initial organisation of the NFE;</p>
+                    <p>f) the NFE was not a Financial Institution in the past five years, and is in the
+                        process of liquidating its assets or is reorganising with the intent to continue or
+                        recommence operations in a business other than that of a Financial Institution;</p>
+                    <p>g) the NFE primarily engages in financing and hedging transactions with, or
+                        for, Related Entities that are not Financial Institutions, and does not provide
+                        financing or hedging services to any Entity that is not a Related Entity,
+                        provided that the group of any such Related Entities is primarily engaged in a
+                        business other than that of a Financial Institution; or</p>
+                    <p>h) the NFE meets all of the following requirements (a “non-profit NFE”) :</p>
+                    <div style="padding-left:10px;">
+                        <p>i) it is established and operated in its jurisdiction of residence exclusively
+                            for religious, charitable, scientific, artistic, cultural, athletic, or educational
+                            purposes; or it is established and operated in its jurisdiction of residence
+                            and it is a professional organisation, business league, chamber of commerce,
+                            labour organisation, agricultural or horticultural organisation, civic league or
+                            an organisation operated exclusively for the promotion of social welfare;</p>
+                        <p>ii) it is exempt from income tax in its jurisdiction of residence;</p>
+                        <p>iii) it has no shareholders or members who have a proprietary or beneficial
+                            interest in its income or assets;</p>
+                        <p>iv)the applicable laws of the NFE’s jurisdiction of residence or the NFE’s
+                            formation documents do not permit any income or assets of the NFE to
+                            be distributed to, or applied for the benefit of, a private person or non</p>
+                        <p>charitable Entity other than pursuant to the conduct of the NFE’s charitable
+                            activities, or as payment of reasonable compensation for services rendered,
+                            or as payment representing the fair market value of property which the NFE
+                            has purchased; and</p>
+                        <p>v) the applicable laws of the NFE’s jurisdiction of residence or the NFE’s
+                                formation documents require that, upon the NFE’s liquidation or
+                                dissolution, all of its assets be distributed to a Governmental Entity or
+                                other non-profit organisation, or escheat to the government of the NFE’s
+                                jurisdiction of residence or any political subdivision.</p>
+                    </div>
+                    <p><b>Note:</b> Certain entities (such as U.S. Territory NFFEs) may qualify for Active NFFE status
+                        under FATCA but not Active NFE status under the CRS.</p>
+                    <p class="color-1"><b>Financial Institution</b></p>
+                    <p>The term “Financial Institution” means a “Custodial Institution”, a “Depository
+                        Institution”, an “Investment Entity”, or a “Specified Insurance Company”. Please see the
+                        relevant domestic guidance and the CRS for further classification definitions that apply
+                        to Financial Institutions.
+                        </p>
+                    <p class="color-1"><b>Investment Entity</b></p>
+                    <p>The term “Investment Entity” includes two types of Entities:</p>
+                    <p>(i) an Entity that primarily conducts as a business one or more of the following
+                        activities or operations for or on behalf of a customer:</p>
+                    <div>
+                       <ul>
+                           <li>Trading in money market instruments (cheques, bills, certificates of deposit,
+                            derivatives, etc.); foreign exchange; exchange, interest rate and index instruments; transferable securities; or commodity futures trading;
+                        </li>
+                           <li>Individual and collective portfolio management; or</li>
+                           <li>Otherwise investing, administering, or managing Financial Assets or money
+                            on behalf of other persons.</li>
+                       </ul>
+                    </div>
+                    <p>Such activities or operations do not include rendering non-binding investment advice
+                        to a customer.</p>
+                    <p>(ii) ”The second type of “Investment Entity” (“Investment Entity managed by
+                        another Financial Institution”) is any Entity the gross income of which is primarily
+                        attributable to investing, reinvesting, or trading in Financial Assets where the
+                        Entity is managed by another Entity that is a Depository Institution, a Custodial
+                        Institution, a Specified Insurance Company, or the first type of Investment Entity.</p>
+                    <p class="color-1"><b>Investment Entity located in a Non-Participating Jurisdiction and managed by
+                        another Financial Institution</b></p>
+                    <p>The term “Investment Entity located in a Non-Participating Jurisdiction and managed
+                        by another Financial Institution” means any Entity the gross income of which is primarily
+                        attributable to investing, reinvesting, or trading in Financial Assets if the Entity is (i)
+                        managed by a Financial Institution and (ii) not a Participating Jurisdiction Financial
+                        Institution.</p>
+                    <p class="color-1"><b>Investment Entity managed by another Financial Institution</b></p>
+                    <p>”An Entity is “managed by” another Entity if the managing Entity performs, either
+                        directly or through another service provider on behalf of the managed Entity, any of
+                        the activities or operations described in clause (i) above in the definition of ‘Investment
+                        Entity’.</p>
+                    <p>An Entity only manages another Entity if it has discretionary authority to manage the
+                        other Entity’s assets (either in whole or part). Where an Entity is managed by a mix
+                        of Financial Institutions, NFEs or individuals, the Entity is considered to be managed
+                        by another Entity that is a Depository Institution, a Custodial Institution, a Specified
+                        Insurance Company, or the first type of Investment Entity, if any of the managing
+                        Entities is such another Entity.</p>
+                    <p class="color-1"><b>NFE</b></p>
+                    <p>An “NFE” is any Entity that is not a Financial Institution.</p>
+                    <p class="color-1"><b>Non-Reporting Financial Institution</b></p>
+                    <p>A Non-Reporting Financial Institution” means any Financial Institution that is:</p>
+                    <div>
+                        <ul>
+                            <li>a Governmental Entity, International Organisation or Central Bank, other
+                                than with respect to a payment that is derived from an obligation held in
+                                connection with a commercial financial activity of a type engaged in by a
+                                Specified Insurance Company, Custodial Institution, or Depository Institution;</li>
+                            <li>a Broad Participation Retirement Fund; a Narrow Participation Retirement
+                                Fund; a Pension Fund of a Governmental Entity, International Organisation or
+                                Central Bank; or a Qualified Credit Card Issuer;</li>
+                            <li>an Exempt Collective Investment Vehicle; or</li>
+                            <li>a Trustee-Documented Trust: a trust where the trustee of the trust is a
+                                Reporting Financial Institution and reports all information required to be
+                                reported with respect to all Reportable Accounts of the trust;
+                                </li>
+                            <li>any other defined in a countries domestic law as a Non-Reporting Financial
+                                Institution</li>
+                        </ul>
+                    </div>
+                    <p></p>
+                    <p class="color-1"><b>Participating Jurisdiction</b></p>
+                    <p>A “Participating Jurisdiction” means a jurisdiction with which an agreement is in place
+                        pursuant to which it will provide the information required on the automatic exchange
+                        of financial account information set out in the Common Reporting Standard and that is
+                        identified in a published list.</p>
+                    
+                </td>
+                <td style="padding-left: 10px; text-align: justify; vertical-align: top; padding-top: 10px;">
+                    <p class="color-1"><b>Participating Jurisdiction Financial Institution</b></p>
+                    <p>The term “Participating Jurisdiction Financial Institution means (i) any Financial
+                        Institution that is tax resident in a Participating Jurisdiction, but excludes any branch of
+                        that Financial Institution that is located outside of that jurisdiction, and (ii) any branch
+                        of a Financial Institution that is not tax resident in a Participating Jurisdiction, if that
+                        branch is located in such Participating Jurisdiction</p>
+                    <p class="color-1"><b>Passive NFE</b></p>
+                    <p>Under the CRS a “Passive NFE” means any NFE that is not an Active NFE. An Investment
+                        Entity located in a Non-Participating Jurisdiction and managed by another Financial
+                        Institution is also treated as a Passive NFE for purposes of the CRS.</p>
+                    <p class="color-1"><b>Control</b></p>
+                    <p>“Control” over an Entity is generally exercised by the natural person(s) who ultimately
+                        has a controlling ownership interest (typically on the basis of a certain percentage (e.g.
+                        25%)) in the Entity. Where no natural person(s) exercises control through ownership
+                        interests, the Controlling Person(s) of the Entity will be the natural person(s) who
+                        exercises control of the Entity through other means. Where no natural person(s) is/
+                        are identified as exercising control of the Entity through ownership interests, then
+                        under the CRS the Reportable Person is deemed to be the natural person who hold the
+                        position of senior managing official.</p>
+                    <p class="color-1"><b>Controlling Person(s)</b></p>
+                    <p>“Controlling Persons” are the natural person(s) who exercise control over an entity.
+                        Where that entity is treated as a Passive Non-Financial Entity (“Passive NFE”) then a
+                        Financial Institution is required to determine whether or not these Controlling Persons
+                        are Reportable Persons. This definition corresponds to the term “beneficial owner”
+                        described in Recommendation 10 and the Interpretative Note on Recommendation 10
+                        of the Financial Action Task Force Recommendations (as adopted in February 2012).</p>
+                    <p>In the case of a trust, the Controlling Person(s) are the settlor(s), the trustee(s), the
+                        protector(s) (if any), the beneficiary(ies) or class(es) of beneficiaries, or any other natural
+                        person(s) exercising ultimate effective control over the trust (including through a chain
+                        of control or ownership). Under the CRS the settlor(s), the trustee(s), the protector(s)
+                        (if any), and the beneficiary(ies) or class(es) of beneficiaries, are always treated as
+                        Controlling Persons of a trust, regardless of whether or not any of them exercises
+                        control over the activities of the trust.</p>
+                    <p>Where the settlor(s) of a trust is an Entity then the CRS requires Financial Institutions to
+                        also identify the Controlling Persons of the settlor(s) and when required report them as
+                        Controlling Persons of the trust.</p>
+                    <p>In the case of a legal arrangement other than a trust, “Controlling Person(s) means
+                        persons in equivalent or similar positions.</p>
+                    <p class="color-1"><b>Custodial Institution</b></p>
+                    <p>The term “Custodial Institution” means any Entity that holds, as a substantial portion of
+                        its business, Financial Assets for the account of others. This is where the Entity’s gross
+                        income attributable to the holding of Financial Assets and related financial services
+                        equals or exceeds 20% of the Entity’s gross income during the shorter of: (i) the
+                        three-year period that ends on 31 December (or the final day of a non-calendar year
+                        accounting period) prior to the year in which the determination is being made; or (ii) the
+                        period during which the Entity has been in existence.</p>
+                    <p class="color-1"><b>Depository Institution</b></p>
+                    <p>The term “Depository Institution” means any Entity that accepts deposits in the ordinary
+                        course of a banking or similar business</p>
+                    <p class="color-1"><b>FATCA</b></p>
+                    <p>FATCA stands for the U.S. provisions commonly known as the Foreign Account Tax
+                        Compliance Act, which were enacted into U.S. law as part of the Hiring Incentives to
+                        Restore Employment (HIRE) Act on March 18, 2010. FATCA creates a new information
+                        reporting and withholding regime for payments made to certain non-U.S. financial
+                        institutions and other non-U.S. entities.</p>
+                    <p class="color-1"><b>Entity</b></p>
+                    <p>The term “Entity” means a legal person or a legal arrangement, such as a corporation,
+                        organisation, partnership, trust or foundation. This term covers any person other than
+                        an individual (i.e. a natural person).</p>
+                    <p class="color-1"><b>Related Entity</b></p>
+                    <p>An Entity is a “Related Entity” of another Entity if either Entity controls the other Entity,
+                        or the two Entities are under common control. For this purpose control includes direct
+                        or indirect ownership of more than 50% of the vote and value in an Entity.</p>
+                    <p class="color-1"><b>Reportable Account</b></p>
+                    <p>The term “Reportable Account” means an account held by one or more Reportable
+                        Persons or by a Passive NFE with one or more Controlling Persons that is a Reportable
+                        Person</p>
+                    <p class="color-1"><b>Reportable Jurisdiction</b></p>
+                    <p>A Reportable Jurisdiction is a jurisdiction with which an obligation to provide financial
+                        account information is in place and that is identified in a published list.</p>
+                    <p class="color-1"><b>Reportable Jurisdiction Person</b></p>
+                    <p>A Reportable Jurisdiction Person is an Entity that is tax resident in a Reportable
+                        Jurisdiction(s) under the tax laws of such jurisdiction(s) - by reference to local laws
+                        in the country where the Entity is established, incorporated or managed. An Entity
+                        such as a partnership, limited liability partnership or similar legal arrangement that has
+                        no residence for tax purposes shall be treated as resident in the jurisdiction in which
+                        its place of effective management is situated. As such if an Entity certifies that it has
+                        no residence for tax purposes it should complete the form stating the address of its
+                        principal office.</p>
+                    <p>Dual resident Entities may rely on the tiebreaker rules contained in tax conventions (if
+                        applicable) to determine their residence for tax purposes.</p>
+                    <p class="color-1"><b>Reportable Person</b></p>
+                    <p>A “Reportable Person” is defined as a “Reportable Jurisdiction Person”, other than:</p>
+                    <div>
+                        <ul>
+                            <li>a corporation the stock of which is regularly traded on one or more established
+                                securities markets;</li>
+                            <li>any corporation that is a Related Entity of a corporation described in clause (i);</li>
+                            <li>a Governmental Entity;</li>
+                            <li>an International Organisation;</li>
+                            <li>a Central Bank; or</li>
+                            <li>a Financial Institution (except for an Investment Entity described in Sub
+                                Paragraph A(6) b) of the CRS that are not Participating Jurisdiction Financial
+                                Institutions. Instead, such Investment Entities are treated as Passive NFE’s.)</li>
+                        </ul>
+                    </div>
+                    <p class="color-1"><b>Resident for tax purposes</b></p>
+                    <p>Each jurisdiction has its own rules for defining tax residence, and jurisdictions have
+                        provided information on how to determine whether an entity is tax resident in the
+                        jurisdiction on the <b>OECD automatic exchange of information portal</b>. Generally,
+                        an Entity will be resident for tax purposes in a jurisdiction if, under the laws of that
+                        jurisdiction (including tax conventions), it pays or should be paying tax therein by
+                        reason of his domicile, residence, place of management or incorporation, or any other
+                        criterion of a similar nature, and not only from sources in that jurisdiction. Dual resident
+                        Entities may rely on the tiebreaker rules contained in tax conventions (if applicable) to
+                        solve cases of double residence for determining their residence for tax purposes. An
+                        Entity such as a partnership, limited liability partnership or similar legal arrangement
+                        that has no residence for tax purposes shall be treated as resident in the jurisdiction
+                        in which its place of effective management is situated. For additional information on
+                        tax residence, please talk to your tax adviser or see the <b>OECD automatic exchange of
+                            information portal.</b> </p>
+                    <p class="color-1"><b>Specified Insurance Company</b></p>
+                    <p>The term “Specified Insurance Company” means any Entity that is an insurance
+                        company (or the holding company of an insurance company) that issues, or is obligated
+                        to make payments with respect to, a Cash Value Insurance Contract or an Annuity
+                        Contract.</p>
+                    <p class="color-1"><b>TIN (including “functional equivalent)</b></p>
+                    <p>The term “TIN” means Taxpayer Identification Number or a functional equivalent in
+                        the absence of a TIN. A TIN is a unique combination of letters or numbers assigned by
+                        a jurisdiction to an individual or an Entity and used to identify the individual or Entity
+                        for the purposes of administering the tax laws of such jurisdiction. Further details of
+                        acceptable TINs can be found at the <b>OECD automatic exchange of information
+                            portal.</b></p>
+                    <p>Some jurisdictions do not issue a TIN. However, these jurisdictions often utilise some
+                        other high integrity number with an equivalent level of identification (a “functional
+                        equivalent”). Examples of that type of number include, for Entities, a Business/company
+                        registration code/number</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+</body>
+</html>
