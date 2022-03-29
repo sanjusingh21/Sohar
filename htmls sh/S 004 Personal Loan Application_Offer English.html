@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Loan</title>
+<style>
+* {
+	margin: 0;
+}
+
+.bb {
+	border-bottom: 1px solid #000;
+}
+
+p, li {
+	margin-bottom: 7px;
+	line-height: 18px;
+}
+
+.w-10 {
+	width: 10px;
+}
+
+.pl-15 {
+	padding-left: 15px;
+}
+
+.text-field-f {
+	height: 18px;
+	display: inline-block;
+	text-align: left;
+	border: 1px solid #000;
+	padding: 0px 2px;
+	margin-left: -5px;
+	vertical-align: middle;
+	overflow: hidden;
+}
+</style>
+</head>
+<body>
+	<h2
+		style="text-align: center; border-bottom: 2px solid #c7b59d; padding-bottom: 10px; margin: 10px 0px; color: #ed6d2a;">OFFER
+		LETTER</h2>
+	<p>
+		Date : <span class="bb" id="ol_date"></span>
+	</p>
+	<p>
+		Mr. / Mrs. / Ms. <span class="bb" id="ol_name"></span>
+	</p>
+	<table border="0"
+		style="border-collapse: collapse; margin-top: 0px; border-color: #c7b59d; width: 50%;">
+		<tbody>
+			<tr>
+				<td>P. O. Box No : <span class="bb" id="ol_po_box_no"></span></td>
+				<td>Postal Code :<span class="bb" id="ol_postal_code"></span></td>
+			</tr>
+		</tbody>
+	</table>
+	<p style="margin-top: 25px;">Dear Sir / Madam</p>
+	<p>
+		<b>Subject : <span class="bb" id="subject"></span></b>
+	</p>
+	<p>
+		With reference to your application dated <span class="bb"
+			id="application_dated"></span> for a consumer loan the Bank is
+		pleased to inform you that your loan request has been approved in
+		principle subject to the execution and provision of the documentation
+		mentioned below to the satisfaction of the Bank and upon the following
+		terms and conditions:
+	</p>
+	<ol type="1" style="padding-left: 0; list-style-position: inside;">
+		<li>Loan amount RO <span class="bb" id="loan_amount_ro"></span></li>
+		<li>Interest rate at <span class="bb" id="per_annum"></span>% per
+			annum.
+		</li>
+		<li>Purpose <span class="bb" id="purpose"></span></li>
+		<li>Monthly repayment / EMI <span class="bb" id="emi"></span></li>
+		<li>Start date of monthly repayment <span class="bb"
+			id="monthly_repayment"></span></li>
+		<li>Documentation / Security to be provided by you:
+			<ul style="list-style-type: disc;">
+				<li>An irrevocable letter from your employer conﬁrming
+					assignment of your monthly salary and end of service beneﬁts to be
+					paid into your account with the Bank.</li>
+				<li>The Bank’s standard loan agreement signed by you.</li>
+				<li>Life insurance for the loan amount to be provided in
+					accordance with the Bank’s policy.</li>
+			</ul>
+		</li>
+		<li>This o…er should not be taken as a conclusive sanction by the
+			Bank to grant you the loan. The Bank has a right to cancel the o…er
+			at any time until the execution of the loan agreement without stating
+			any reason. The Bank will not accept any liability, whatsoever,
+			arising from the cancellation of this o…er.</li>
+	</ol>
+	<p>Please sign the undertaking letter</p>
+	<p style="margin: 15px 0px;">Thank you</p>
+	<p style="margin: 15px 0px;">
+		Branch Manager <span class="bb" id="branch_manager"></span>
+	</p>
+	<h3>Acceptance</h3>
+	<p>I accept the above o…er and agree to the terms and conditions
+		stipulated above</p>
+	<table border="1" style="width: 100%; min-height: 130px; border-collapse: collapse;"cellpadding="10px">
+		<tbody>
+			<tr align="center">
+				<td valign="top" style="padding-bottom: 100px;">Borrower’s Signature</td>
+				<td valign="top" style="padding-bottom: 100px;">Name of the witness</td>
+				<td valign="top"  style="padding-bottom: 100px;">Signature of the witness</td>
+			</tr>
+			
+		</tbody>
+	</table>
+	<table style="border-collapse: collapse; margin-top: 15px; border-color: #c7b59d;"
+		cellpadding="10px">
+		<tbody>
+			<tr>
+				<td><span>ID No.:</span>
+					<div id="id_no" style="display: inline-block;" class="pl-15">
+					</div></td>
+			</tr>
+		</tbody>
+	</table>
+	<p style="margin-top: 5px;">(required only in case of illiterate
+		applicants)</p>
+	<p style="float: right">
+		Date: <span class="bb" id="accepetance_date"> </span>
+	</p>
+</body>
+</html>

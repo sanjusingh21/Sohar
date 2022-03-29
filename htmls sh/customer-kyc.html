@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer-KYC </title>
+    <style>
+        *{
+            margin: 0;
+            box-sizing: border-box;
+        }
+        h3,h4,h2{
+            margin: 7px 0px;
+        }
+        table td{
+            padding: 7px 0px;
+        }
+        .color-red{
+            color: red;
+        }
+        td{
+            vertical-align: top;
+        }
+        .table-1 td{
+            padding: 10px;
+        }
+        .table-2 td:first-child{
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p style="text-align: center;">
+		<img
+			src="data:image/png;base64,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"
+			alt="" style="width: 300px;">
+	</p>
+    <h1 style="text-align: center; margin-bottom: 30px;">Relationship with Individual & Joint Accounts</h1>
+    <h3>Know Your Customer-KYC Form</h3>
+    <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td style="width: 50%;"><b>Customer Name</b> </td>
+            <td>ALWALEED SALIM MOHAMED AL SHAIBI</td>
+        </tr>
+        <tr>
+            <td><b>New/Review/ Update of an Existing Relationship</b> </td>
+            <td>New Relationship</td>
+        </tr>
+        <tr>
+            <td><b>CIF #</b>  </td>
+            <td> RI00400635</td>
+        </tr>
+        <tr>
+            <td><b>KYC prepared on (date dd/mm/yyyy)</b> </td>
+            <td>08/11/2020</td>
+        </tr>
+        <tr>
+            <td><b>Next KYC Review Date:</b><span class="color-red">As per Risk Rating</span></td>
+            <td>03/11/2030</td>
+        </tr>
+    </table>
+
+    <h3 style="margin-top: 15px;">1. KYC Risk Profiling</h3>
+    <h4>Section A</h4>
+    <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td >Is the customer a politically exposed person or is related to a PEP   </td>
+            <td style="width: 30px;">No</td>
+        </tr>
+        <tr>
+            <td >Is the customer a non-resident	</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td >Does the customer deals in HIGH RISK BUSINESS	</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td >Is the customer linked with any high risk country? (E.g. Major business setup / funds sourced from high risk jurisdictions)</td>
+            <td>No</td>
+        </tr>
+    </table>
+
+    <h4>Section B</h4>
+    <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td >Expected total annual credits into the accounts &lt;=100,000?</td>
+            <td style="width: 30px;">No</td>
+        </tr>
+        <tr>
+            <td >Expected aggregate balance &lt;= OMR 100.00 (all the deposit accounts, including CASA, FD & others)?</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td >Expected aggregate value of asset products &lt;= OMR 100,000</td>
+            <td>No</td>
+        </tr>
+    </table>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;" cellpadding="10px" border="1">
+        <tr>
+            <td style="padding:10px; vertical-align: middle;">
+                <h2>Risk Classification:</h2>
+                <p>Note: Enhanced Due Diligence (EDD) section to be filled for <span class="color-red">High Risk Customer</span> </p>
+            </td>
+            <td style="width: 100px; padding: 10px; vertical-align: middle;">Low</td>
+        </tr>
+    </table>
+        
+    <h3 style="margin-top: 15px;">2. Customer Profile</h3>
+    <table style="width: 100%; border-collapse: collapse;" class="table-2">
+        <tr>
+            <td style="width: 50%; padding-right: 10px;">Source of funding the Account on a regular basis</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">Approx. Annual Turnover i.e. funds expected to be credited in next 12 months</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">Approx. Monthly Gross Salary / Income 	</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">Reasons for opening account with us</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">Nature of Business</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">Nature of Employement</td>
+            <td></td>
+        </tr>
+    </table>
+
+    <h3>3. Enhance Due Diligence (EDD)</h3>
+    <table style="width: 100%; border-collapse: collapse;" class="table-2">
+        <tr>
+            <td style="width: 50%; padding-right: 10px;">How was the Prospect Introduced?</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">Product Usage/Transaction Profile: To best of your Knowledge, are you satisfied with client’s intended usage of financial products and whether this is consistent with client’s profile?     </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">Are you  aware of any aspect related to customer or its related parties, that could makes the customer risk profile unacceptable for the bank in terms of reputational/AML risk?</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">If the Customer (or its relatives) is Politically Exposed Person (PEP) please select category    </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">Any other details that you would like to mention on the KYC-EDD       </td>
+            <td></td>
+        </tr>
+    </table>
+
+    <h3>4. Transaction Profile – Estimated Activity (Equivalent in OMR ) – prorata on monthly basis</h3>
+    <table style="width: 100%; border-collapse: collapse;" class="table-2">
+        <tr>
+            <td style="width: 50%; padding-right: 10px;"><b>Withdrawals</b> </td>
+            <td style="width: 25%; padding-right: 10px;"><b>Cash</b></td>
+            <td><b>cheque</b></td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">No. of Transactions in a Month	</td>
+            <td ></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">Total Amount of Transactions in OMR in a month</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="3"><b>Deposits</b></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">No. of Transactions in a Month	</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">Total Amount of Transactions in OMR in a month</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="3"><b>Outward remittances</b> </td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">No. of Transactions in a Month	</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">Total Amount of Transactions in OMR in a month</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="3"><b>Inward remittances</b> </td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">No. of Transactions in a Month</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">Total Amount of Transactions in OMR in a month</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    
+    <p style="margin-top:10px;margin-bottom: 10px;"><b>Declaration:</b>  I confirm that, based on information provided by the customer & after reasonable inquiry nothing has come to my attention which causes me to believe that the aforesaid profile is incomplete/inaccurate/outdated or indicates that client is not reputable or its income is derived
+        from illegal/questionable sources. I further confirm that the requirements of Bank’s AML/KYC policy and procedures have been met.
+    </p>
+
+    <table style="width: 100%; border-collapse: collapse;" border="1" class="table-1">
+        <tbody>
+            <tr>
+                <td rowspan="2" style="width: 40%;">Prepared by:</td>
+                <td>Name & Staff ID</td>
+                <td>Signature & Date</td>
+            </tr>
+            <tr>
+                <td style="min-height: 30px;">&nbsp;</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Reviewed by:</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="3">All new High Risk relationships require Prior Approval from Concerned DGM or his authorized delegate</td>
+            </tr>
+            <tr>
+                <td>Pls provide Sign off here or attach email approval</td>
+                <td>Name & Designation </td>
+                <td>Signature & Date</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

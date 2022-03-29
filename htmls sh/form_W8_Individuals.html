@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Individuals</title>
+    <style>
+        *{
+            margin: 0px;
+            line-height: 22px;
+            
+        }
+        table{
+            width: 100%;
+        }
+        .bb{
+            border-bottom: 1px dashed #000;
+            display: inline-block;
+        }
+        .bb-1{
+            border-bottom: 1px solid #000;
+            display: inline-block;
+        }
+        ul{
+            padding: 0;
+            list-style-position: inside;
+        }
+        li{
+            list-style: inherit;
+        }
+        .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th{
+            border: 1px solid #000;
+            border-top: 0px;
+            border-right: 0px;
+            padding: 8px;
+        }
+        .table-bordered>tbody>tr>td:first-child{
+            border-left: 0;
+        }
+        body {
+	font-size: 12px
+}
+    </style>
+</head>
+<body>
+    <table class="table-bordered" style="border-collapse: collapse;">
+        <tbody>
+            <tr >
+                <td style="width: 33.33%; padding: 0; border: none;"> </td>
+                <td style="width: 33.33%; padding: 0; border: none;"> </td>
+                <td style="width: 33.33%; padding: 0; border: none;"></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <table  class="table-bordered">
+                        <tbody>
+                            <tr>
+                                <td style="width: 20%; border-bottom: 0;">
+                                    <b>Form W-8BEN</b><br/>
+                                    (Rev. July 2017 ) <br/>
+                                    Department of the Treasury Internal Revenue Service 
+                                </td>
+                                <td style="width: 60%; text-align: center; border-bottom: 0; padding: 0px 10px;">
+                                    <h3>Certificate of Foreign Status of Beneficial Owner for United
+                                        States Tax Withholding and Reporting (Individuals)
+                                    </h3>
+                                    <p># For use by individuals. Entities must use Form W-8BEN-</p>
+                                    <p>#Go to www.irs.gov E.
+                                        /FormW8BEN
+                                        for instructions and the latest information. </p>
+                                    <p># Give this form to the withholding agent or payer. Do not send to the IRS. </p>
+                                </td>
+                                <td style="border-bottom: 0; padding-left: 10px;">
+                                    <b>OMB No. 1545-1621</b>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div>
+                        <b style="float: left;">Do NOT use this form if:</b>
+                        <b style="float: right;">Instead, use Form: </b>
+                        <div style="clear: both;"></div>
+                        <ul>
+                            <li>You are NOT an individual<span class="bb" style="width: 50%;"></span>W-8BENE</li>
+                            <li>You are a U.S. citizen or other U.S. person, including a resident alien individual <span class="bb" style="width: 15%;"></span>W-9</li>
+                            <li>You are a beneficial owner claiming that income is effectively connected with the conduct of trade or business within the U.S (other than personal services)<span class="bb" style="width: 40%;"></span>W-8ECI</li>
+                            <li>You are a beneficial owner who is receiving compensation for personal services performed in the United States<span class="bb" style="width: 40%;"></span>8233 or W-4</li>
+                            <li>You are a person acting as an intermediary <span class="bb" style="width: 40%;"></span>W-8IMY</li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+           <tr>
+				<td colspan="3"><b>Note:</b> If you are resident in a FATCA
+					partner jurisdiction (i. e., a Model 1 IGA jurisdiction with
+					reciprocity), certain tax account information may be provided to
+					your jurisdiction of residence.</td>
+			</tr>
+			<tr>
+				<td colspan="3"><span
+					style="background-color: #000; padding: 3px 5px; margin-right: 10px; color: #fff;">Part
+						I </span> <b> Identification of Beneficial Owner (see instructions) </b>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">1. Name of individual who is the beneficial
+					owner <b><span id="name" ></span></b>
+				</td>
+				<td>2. Country of citizenship <b><span id="citizenship" ></span></b>
+			</tr>
+			<tr>
+				<td colspan="3">3. Permanent residence address (street, apt.
+					or suite no., or rural route).<b> Do not use a P.O.box or
+						in-care-of address </b><b><span
+					id="permanent_residence" ></span></b>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">City or town, state or province. Include postal code where appropriate  <b><span
+					id="city"></span></b>
+				</td>
+				<td>Country <b><span id="country"> </span> </b>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">4. Mailing address (if different from above) <b><span
+					id="mailing_address"></span></b>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">City or town, state or province. Include postal
+					code where appropriate.<b> <span id="mailing_city"></span></b>
+				</td>
+				<td>Country <b><span id="mailing_country" ></span></b>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">5. U. S. taxpayer identification number (SSN or ITIN),if required (see instructions) <b><span id="us_identification_no" ></span></b>
+					
+				</td>
+				<td>6. Foreign tax identifying number (see instructions) <b><span id="foreign_tax_id"></span></b>
+				</td>
+			</tr>
+			<tr>
+				<td>7. Reference number(s)(see instructions) <b><span id="ref_num" ></span></b>
+				</td>
+				<td colspan="2">Date of birth (MM-DDYYYY)(see instructions)
+				<b><span id="dob" ></span></b>
+				</td>
+			</tr>
+            <tr>
+                <td colspan="3">
+                    <span style="background-color: #000; padding: 3px 5px; margin-right: 10px; color: #fff;">Part II </span>
+                    <b>Claim of Tax Treaty Benefits </b> (for chapter 3 purposes only) (see instructions)  
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <p>9. I certify that the beneficial owner is a resident of <span id="beneficial_owner_residence" class="bb-1" style="width: 80%;"></span> within the meaning of the income tax treaty between the United States and that country. </p>
+                    <p>10. Special rates and conditions  (if applicable—see instructions): The beneficial owner is claiming the provisions of Article and paragraph <span id="article_and_para" class="bb-1" style="width: 80%;"></span> for the treaty identified on line 9 above to claim a <span id="claim_percentage" class="bb-1" style="width: 10%;"></span> % rate of withholding on (specify type of income): <span id="type_of_income" class="bb-1" style="width: 80%;"></span> Explain the additional conditions 
+                        in the Article and paragraph the beneficial owner meets to be eligible for the rate of withholding:  <span id="rate_of_withholding" class="bb-1" style="width: 80%;"></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <span style="background-color: #000; padding: 3px 5px; margin-right: 10px; color: #fff;">Part III </span>
+                    <b>Certification</b>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <p>Under penalties of perjury, I declare that I have examined the information on this form and to the best of my knowledge and belief it is true, correct, and complete. I further
+                        certify under penalties of perjury that: 
+                        </p>
+                    <ul style="margin-top: 15px;">
+                        <li>I am the individual that is the beneficial owner (or am authorized to sign for the individual that is the beneficial owner) of all the income to which this form relates or
+                            am using this form to document myself for chapter 4 purposes,</li>
+                        <li>The person named on line 1 of this form is not a U.S.person, </li>
+                        <li>The income to which this form relates is: <br/>
+                            (a) not effectively connected with the conduct of a trade or business in the United States, <br/>
+                            (b) effectively connected but is not subject to tax under an applicable income tax treaty, or <br/>
+                            (c) the partner’s share of a partnership's effectively connected income, 
+                        </li>
+                        <li>The person named on line 1 of this form is a resident of the treaty country listed on line 9 of the form (if any) within the meaning of the income tax treaty between
+                            the United States and that country, and </li>
+                        <li>For broker transactions or barter exchanges, the beneficial owner is an exempt foreign person as defined in the instructions. <br/> Furthermore, I authorize this form to be provided to any withholding agent that has control, receipt, or custody of the income of which I am the beneficial owner or
+                            any withholding agent that can disburse or make payments of the income of which I am the beneficial owner. <b> I agree that I will submit a new form within 30 days
+                            if any certification made on this form becomes incorrect. </b> </li>
+                    </ul>
+                    <p style="padding-top: 15px;"><b>Sign Here #</b></p>
+
+                    <table style="text-align: center; width: 100%;" cellspacing="20"  >
+                        <tbody>
+                            <tr>
+                                <td style="width:60%; border-bottom: 1px solid #000;"> <b><span id="sign_here"></span></b></td>
+                                <td style="border-bottom: 1px solid #000;" ><b><span id="date"></span></b></td>
+                            </tr>
+                            <tr>
+                                <td>Signature of beneficial owner (or individual authorized to sign for beneficial owner) </td>
+                                <td>Date (MM-DDYYYY)</td>
+                            </tr>
+                            <tr>
+                                <td style="width:60%; border-bottom: 1px solid #000;"><b><span id="name_of_signer" ></span><b></td>
+                                <td style="border-bottom: 1px solid #000;" ><b><span id="capacity" ></span></b></td>
+                            </tr>
+                            <tr>
+                                <td>Print name of signer  </td>
+                                <td>Capacity in which acting (if form is not signed by beneficial owner) </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3"  style="border-bottom: 0px; font-size: 12px;">
+                    <b>For Paperwork Reduction Act Notice, see separate instructions.</b>
+                     Cat. No. 25047Z Form W-8BEN (Rev. 7-2017)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
