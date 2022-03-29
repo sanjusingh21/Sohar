@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance HL</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        p {
+            line-height: 22px;
+        }
+
+        body {
+            font-size: 14px;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        table td {
+            width: 50%;
+            padding: 7px 7px;
+            vertical-align: top;
+            text-align: justify;
+        }
+
+        table td:first-child {
+            padding-right: 7px;
+        }
+
+        table td:last-child {
+            padding-left: 7px;
+            direction: rtl;
+        }
+
+        .bb {
+            border-bottom: 1px solid #000;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <p style="text-align: center;">
+        <img style="width: 300px;"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbUAAACRCAYAAABE4CZJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAACUhSURBVHhe7Z13txTFuof9AvfjnHU/wP0A559zz/UcjxkjRhTEHBHxYCQoCigKkgRJKiBBkkjcZNjETU6SlXCEVXd+Pf3Orql5q9P09KTfs9a7dE9Pd1fXdNczVW/VcJshhBBCOgRKjRBCSMdAqRFCCOkYKDVCCCEdA6VGCCGkY6DUCCGEdAyUGiGEkI6BUiOEENIxUGqEEEI6BkqNEEJIx0CpEUII6RgoNUIIIR0DpUYIIaRjoNQIIYR0DJQaIYSQjoFSI6SB/OfGDXP92jXzx74d5srS2d64efFcuAchpB4oNUJyAgK7cumSOX/2rDl9/Jg5duhgJU7PnmBO3PVf3rjR1xsehRBSD5QaIXVw7Y8/AomdONxXJTE3KDVCioFSIyQl6JElEZkdcVK7de1qeHRCSD1QaoQkBLmxsydPqtKKi+PLFqgykyCE5AOlRkgM9chM4viaparMJAgh+UCpEeLh5p9/1i0zCUqNkGKg1AhRuHzhQqqcWVxQaoQUA6VGiAV6Z+50/DyCUiOkGCg1QkIwPT/P3pkdlBohxUCpEVICw42ajPIKSo2QYqDUSNdz/uwZc/TgAVVGeQWlRkgxUGqka7l165b57fSpQGh2aFKqNyg1QoqBUiNdy6ljR82RA/uDcMWWt9yipHZ2+ANhiQgh9UKpka7kXKmHdmT/vnKEYmu03DShIX4bNSQsFSGkXig10nX8duqUObxvbyUqcrME1wi5aUJDUGqE5AelRrqKSxfOm0N795i+vb2VKEpumtAQlBoh+UGpka7h2tU/zME9u83B3t2B2IqWmyY0BKVGSH5QaqQrwEzHQyVxHdi9qyy2jHKrR3Ca0BCUGiH5QamRruDk0SNm/66dQUBsNXLr9cutSnB1yE0TGoJSIyQ/KDXS8fx++bLZt3N7EPt37aiRW0VwltxsweUlN01oCEqNkPyg1EhHc+vmzUBWe3dsC0Lktm9nhNxK0Qi5aUJDUGqE5AelRjoa/GJI77Yt5di+tXFyswTnk5smNASlRkh+UGqkY/nPjRtm95bNZs/WniDi5VYWnCa3PGZMakJDXFk6OywxIaReKDXSsRw/3Gd2bd5odvVsCuQmgquSW43g+uVmCy4PuZ1+7wlKjZAGQ6mRjgS9tB0b15sdmzYEocmtIjhVbvqkknrkRqkR0ngoNdKRnD5x3GzfsM5sh9gsue0M5SaCc4cmM8kt4XIASo2QxtNyUjt37pzp7e2txNGjR8Mt7cPVq1eDsuNaSHPYsXGD2bb+V7MNYgvlFgguZ7lVBGfJzRacLTdKjZDG0xJS6+npMcOGDTN/+ctfzG233abG4MGDzaJFi9pCFBCaXe52FHM7c/7sWdOzdo3Z8usvZuu6tWW5lcIrN2to0pVbnjMmT4+k1AhpNE2VGhr/AQMGVMkrSYwaNaql5WZLDQFZU2zFcWDPLrP5l1WlWB0vt1BwRciNUssXtAH4ort69erwFUKaKDXcjHbDnzYgChyjFXGlhvjrX/8abiWN5ObNP82GVT+bjatXmE1rVqpyE8FpckNkk1tZcJrcZFLJKUotNyZNmlR5tjAaQojQFKnNmjWrqsGvJ3Bztxqa1BB4nTQWLLZet2KZWb9yeZXcNq3xyy3Iu8XITQRXJbcawfXLzRacyI1SywdbaAhKjdgULjVfg581WnHowXeNkDlpLAdK8vh1+VKz7udlNXIrC65ablVDkynkVhGcKjd9UgmlVj8YxnefK0qN2BQuNQzDuTelHRhWxKQRCADfyHDDau9DtGIvDVBqzQPS+mXpT2btsiWB3ALBeeW2yi+3UHB5Lgc4Ofp5VWqfP/i/Ztx775qvPhltFsycblaXyn60r89cv34tvCoiaKM8lBqxKVRqmOXo3pASkJmv14Up8tgmQsR/W1kQlFpzuH7tmln908Ig1ixZrMttRVlu/UOT/XKzhyZduQWCq1NuJ2aMU6U24eG/mxcfud+8+PD95vkH7zVDH7jbPDfgLjP4vn+ZkS8/b+bNmGq292wOrq/bodRIHIVKDbMW3RsS0WmzAym15nDuzBmzcuEPZtWiH82qxT/WyE0Eh6HJWrmVJ5WocitFHssBjk//VJXaxEduNy8PfCAIyO2Fh+6ryG3I/XcGcnv23jvMoLv/YaZNHG+2b97UtYKj1EgchUrNN5TYaY09pdYcDu/fZ37+Yb5Z8eP3itwWeeXmTipp1HKA49M/UaX2xcA7zGtPPGxeeezBQGwvPTqgIrehD9yjyu3lxx42i+bNNZcuXgivvjug1EgchUoNPTL3hkRAAp0EpdYcdpTEsvz7eUGU5bYgkFsgOEdu9tCkT25RMyazLAfwSe3Lx/9l3nhqYElsj9TKrTIkeU8wJClye+aefwZye/rO282cad90jdwoNRJHoVLzLbSm1EgebFq72iyZ951ZtmBuEFnk1sjlAMenjVWl9tWTd5m3nnncvPn0Y+b1Jx8N5Pbq4w9V5ObLt6HXFsjtrn65dfqwJKVG4miJ4Ufk2pqF+1uTEvWA/bXrdKUmvxFpRxG/lIL8ZZrzYpvMRI2bcYoJPfK+qDxpI6590eyZZvGcWeanubO9cqsMTVpycyeV5LkcQCaVQGzHpo5Rpfb1U/eYtwc/aYY9+4R5c9BjltweDuTmDkn68m2Q20sDHzLr17TvL2zY95p2/1BqJI5CpYab1b0hJYpcbyYPTtzyAiwtyFIuNNDa8URqOGbUz4OhXChfvY28DcqELw++IWCEzCq1z4uy2u+Ja0DcRgfXYRN17a7007Jw1vRSzKiR29L5c/xyW1SWW1lwnhmTOS0H8Elt8qB7zTvPPW2GD3mqSm4YkhS5uUOSkm+zhyRFbui1Tfj4w7YbksS9Yd+fuGddKDUSR6FS0xZO2gGJ4Bt8o8CxfTMwowKNPZYjJMUnNVxfnEjdgBTqqRPsi/Nqx/YFGhY0HtoSjLRSQ+DnzPDZx/3Op9aIpeGHGd+YH7+dVi237771yq0suBRyq3M5wNEpo1WpffPsAPPu88+YEUMHBXKD2BAyJJk03waxVfJtpV4bJpNs27wprJ3WRntm2klq+CKIstUbeFbqfQ4EfElwjx93bFwH9kO7g3q1Q9YP51W+RlGo1AAqx70p7ZAGNW+5oVGN6qUkCbfX4UN7QOsJyCBLfeRxzW7g84sCn527D8qQpBz1PiwLpk0235fEJnIrC65abog4uWVdDhA3Y/LolFGq1CYNHWhGvjikFINr5IZem5Zvg9iS5tuQa2t1tC9e2v2g3V9x92QR5P3M43mp94fbtbYW9eeCc0CmcV867cijfI2icKmhEpI2tKg0bVw9LXk27ihTHHnf4Ii0YmuE0BBZpJY06uHc2TNm3jdfmflTvy7LbfoUr9xkaNKWW//QZOOWA+yfOUGV2oevvmA+eOV5895LzwVy+/cLzwZiQ7hDknH5Nt8SgNHD32rpSSTa/dBOUgONeN4QmoiSECW1LCLzBdrEvDsh9VC41EDaBhcfTprhP5tGNO5xPbZGSA2R9OFN88UhbbSq1C5fvGDmTP7SzJ0ySZXbDzOneuUmk0qq5Zb/coBd82eoUvv49ZfMR6+9GIitX26DK3Kz821Bry1Dvg29ttHvtK7YtPuh3aRWz70fF7jGtOLAPu5xILE8ROYG2hvt82oGTZEagGzS5pfw/rQVp32wdmC7jGMjIE9884iTQlQ5sE3bxw2cB+PXcm6UI668eH8cccfATW1fMwKiTvJ54NhRJHmwUbe4dtS1nD/JdcUx+6uJ5ruvv6jIDQG5IWrlNj2QWyC4mBmTmtySzJh05bZr3nRVaqPfetWMevOVQG7Sa3v/5aHeIcmK3Kx8m38JQHW+bcyIYS0pNu0+wX3h0spSA7iv3fLlFXhu0xDXDjQi8niO66VpUgP45oHGVKucqEg6oQQVrO2PiPtmgeNHTbCIusFwXG0fibjyo9w+qUI8UcRdc1yPF7KLEnq9UsO1N2oc/tsvPjfffjk+kBsCchPB2XIL8m4Z5FbvcoAdc6eqUhv79utmzLDXArl9/MbLqtzQaxO52UOScfk2bQnAmBFvt9yPJWv3SjtKDaDckBvKlTbca3MjaV4fJDmeL9DO4FlFfUskPV6zxdZUqQlo5NJ+w4FU0NuLwtfNRqMdt68QVS6fFKOklvQD12YeSkSV3dfbSnPNeJ9PbLixo4iSGuqykUwf/4mZOXGcmfnFZ165ydCkJreGLAcIJ5VAbNu/m6JK7dN33jSfDH8jkFul11aSG4Yk0+Tb7CHJuHzb2HdbS2za/dKuUqsHfNlFGxE1auJrd1zSSg3nhDSj2okk5UMkbWsaQUtITUCFoacQV2ESeJ+vx4NK1fZBJL0pBJ8cfY20T2ppvmUBn1BRRxp5XrNPqlmlVkTDM2vSBDPt87E1csPr7tBkVd4NcitFjdxSzJhMIrdtsyerUvusJJhxI96qyE16bTIkKfk29NqS5tt8SwDsfNuksc370QMX7Z7pRqkJaNd87Q56UElIIjV8eUU7k7Z9AFFfYKPa5kbTUlKzQaOa5EPx3dBo+NO8PwqfpHBDaPjej5sgDT6x+GRaxDXHHct3o6e99iwsKwnnm3GjzdTPxlTkNmPCp5nkVhZcvssBtn77lSq18e+NMJ//e3hJbsMCuUFsmtzyz7fdbZZ8Pz+sveai3TPdLDUAKfi+4CcZwke9aPuKyOJSEUnAZ+Qb1SnimddoWakJqDTfNxYJ7cPx9XKSDv+5+G4u7dtIXlLDjasdx/cQ+3KAWW7edpTaqpJMpnzycRCB3EpRI7cvPo+XW+blAOVJJb7lAD0zvlSlNvHDf5sJ748w40e+U5GbOyQp+TZ7SDIu31a9BMCfb9vfuyesweah3TPdLjXgew6TtGOa1HxfiOvB9+Ub0aj8eRQtLzXBJymE1h33fUvJWsk+YWgPXl5SA9pxfA+x75qzDAO0o9R29GwyX43+wHw95kMzeexHfrlNHOeVG8KVW17LATZP16X2xUcjg5jwwbtBrw1yw5CkJjc73wax9efb+ock4/Jt7pDksGefMpcvXgxrsTlo9wylVkb7Qp3kedLag0Y9h8187l3aRmrAJxaEi6+Bz4rvQ2sHqWWhHaV27HBfIIdJo96vlduno7xyk0kljV4OsGla7eLr44P+JygryoyyB722UG7lXls53+YbktTybd4hyYh82+RxY8NabA7aPUOpldHavSTXrLUHjXoOfUOleK1o2kpqvuE4hPsA5NnAA9/SA0qtmmZK7fcrVwIhQAwQxJcfvxcIA+HKDXk3yA3hyg0BuYngbLnVsxxg7Xe169SOvHFPUDYpJ8pckRuGJJV8W5IlAJrcfEsARG47t24Ja7J4tHuGUiuT9Zq19qCRz6Evp1/0EGRbSQ348mtJpaY9KEnwHU+butpqUssyvbYdpQZmTPgsEAGEECc3mVRiy63RywE0qaEsKJPIDb02kRsknSXfZi8BiM+3lZcADC+95/r162FNFot2z1BqZbTnWku5uGj7NfI59HU6ss5jyErhUkM3FfmxLHkekFRqvp5V2mn1AGXVjoXQaJbU8rzmdpXa6iWLg4YfAtDkJkOTmtyKWA5QK7V7g3OjDCgPAsOmIjeUW+Rm59vsJQBp8m32EgAt37Z2xfKwJotFu2cotTLa7MIkz1PRUgNZ8395UqjUIAeRUpZZOFFycR8A34wcVHpaoWoPEgLXotEsqeEbkfZ+PBRpr7ldpXbk0MGgoUejX5FbSQSQG8Tgyg0CEZm4cks1Y9KSW1lwutxcqR0tSQ3nwjkxLCpyg3RFblVDkinybfaQZGy+LVwC8O4LQ8zlS8VPGtHuGUrNP6SXZEZzM6TWjHO6FCY1W2gS6EKnaWx9DSbCJUqAaXouGLrzrcPwLYJultSirjnJcIVN1jVvvs+oqBv7xo0bQeOO3gsaevRmfHJDeOVWikxyi1kOUCO1N+8LeoY4R5XcnCHJGrk5Q5Jp8m32kKSWb1s4Z3ZYm8Wh3TPdLjVf24PXktAqUiv68ylEaprQJNBz0m5eF18vBOFrsKOWAfiEZBMlNIQvAdosqYGoa07aO/aJCRF3g/r2bfTDZLOo1ChLrsmVG3o3kEEwNOmRW2VoUpNbOKkk/XKA8qQSTWoY5sQxcWycByFDkknzbb4lACI3X74NYnPzbe+9MtTcKDi3pt0z3Sw1XLuv7Un6LGmCafRzqJ2z6M+nEKn5Gjo7cOEQlysKdLO1irID+2lEzZZE4LjagwMJo8xRQovq7TVTanHXjC8RvvpKUtdR5wa+z7rRD5PN4QP7g0Ycjbkmt/LQZLXc3EklVXIricUnt7TLAWqk9tb9wf4IHAs9QpFb0GurM98mvTZ3CUBcvm3dqhVhbRaDds90m9Tw7OLZjHoG0SYlHd3SjtPo51A7Z9GfT9N7avVG3DoIXyNrB46BipfQ3mNHXF6umVIDSa4ZD4d9zVECtyPruRv9MLl8+fEHQc9E5IZG3Se3yqQSRW4IV24QjfSoXLkhIDcRnC035N00qeG9kCL2RQ8w6LWV5FYzJBnKDeVR823otWXIt2lLAMaNHB7WZDFo90xSqTFaO+LajLxpak4tj0gyXR2Vqu2bJdD4x52z2VIDeV6zHe0itY2/rA56ItIrceWGRl4a/Bq5leQQJ7dgaNKRm8yY1OQmeTdXasdKUsM2vEeVW+m4IjecL0u+zR6SFLklybedOHokrM3Go90zlFpnRMdKTfBNO88SvmE0Fwg1j0Y+idBAK0itUV8i2kVqyAmNHvZq0AOpkVupMffLrbHLAVyp7X/3ySAHB+Fhu8hNxIjjxOXbfEOScfm2oNcW5tukfux825IFc8PabDzaPUOpdUZ0vNQAblYM4WkVkCQglyRTWl3qESoEkURooBWkJmS9Zt9wZLtIDWxYsyrocaCBFrmhR+KTmwxNVsmtJAXIAZJw5QaZQCqB4By5BXk3ZcbksRf/ViW1PZ+8GeTcMDwpQ5UiNpFb0GsL821VQ5Kh3KQMrtyCXluYb7OHJOPybbIEYMzbr4U12Vh8eWBKrTOiK6QmoKeVtjdRz8JtADFpv6XmC8g3yUxJm1aSGkB5sI92LC1Qx76Gpp2kht7ah6XGGjkiyA3Daq7cMPyGBl0mldhyQ+MPuUEGrtwQXrmVwic3zHa0pdb76VvBBBJMJEHOTXptkUOSrtysXluyfJu+BEDkZg9Jnjt7JqzNxoF2QLtntOecUmu/6CqpCWhAIQ7IBhUgvTj0FvA3Glnc+PXIzMU9p3wAkCz+Rg8nS28Q4Nh4+NzQvnnGoR0n6bCri++a8f94DdvwHiHLuXGN2n5Zrj0PMItPFhm7csMwm09uCJ/cgqFJj9wqQ5Oa3CaOU6W2cNaMYMp/IDf02pLKLUG+DWVLmm+T65YhSdTJprVrwppsHPa9KIE2QAP3J+4lRvtE0hGuvGgJqRHSSMaOGBYsLE4qt2Bo0iM3mVRiy83Ou9XIrSQZyAbSgXzwCyK21PZ+9nawMBtr2CA3iK0it+lTYvNt6LVlybeh7LiGuHzb3KmTw1psDGj0XKEhkq6pJMSFUiMdz/Ejh4OfgMKvZUBuWGDsyq2cdxtSmVRiy03ybprcKpNKFLkhXLnhB4xtqe37bHjwE1r4tZF+uYW9tnBIUvJtdq8tNt8GsZUC59bk5su34foQY6whyUaBkRdf7hayIyQLlBrpCpYv/MHgn1rR5IYFxz65IVy5ocGXxr9Gbu9HLweokdrn7wQ/doxf9Re5QWya3PLIt0l50uTbzv92NqzF/MCQlG+yGIYjCckKpUa6AkwaGf/hyOCfWIHc8Kv0kBt+pd6VG8KeMVklt9cTLAcIJ5XYcpO8myu1/ePfCX69H2LDDx5X5OYbkoyRm28JQFy+Db02ybe5Q5L4kei8QE4MQ4uazCSKzsGQzoJSI13D2dOngn8zDP8gZlluD6eSm+TdNLnJ0KQmNwhD5Hbk9bsdqY0I/q01hC03+WV/V27otWlLAOLybUGvLWYJgMjNzrfherasXxfWYHbQ+0qyjAeTigipB0qNdBX4151ffOT+QGyu3IKhSUdueS8HOOxI7cCEd83KhT8E/zK2iE3kZg9Jpsm3VQ1JxuTb0GsTuVUNSVr5tg2rV4a1lx1NYG5wcgjJA0qNdB1rli8zLzx0XyC3lx4dEMjtlccerJFbmhmTSZcDHH7triqp9Xw91qxa/GMgtrLcFlT12rR8G3ptmfJt1hKANPm2hbO/DWsuO5rE7Ij6gXBC0lC41Ox1UCQf8ly/VyRozJrFgm+nm6EP3OOVW2VSSUq5xS0H2D7ssSqpbZ7+pVmzZJFZ/dPCitzQa3Pllijf5lkCEJdvs5cAaPm2RSWZ1osrMQkMSWZdD0paD+RD7ZwoPuOiKfSMGF7AFF6KLT9wA6FOsy7IbibNuOFt5s+E2O7ul9vDEXKrcznAmHBSSc+IZ6qk1jPjS/PL0p9KYlvcL7dF/XLz5duqhySj820Qm+Tb7CHJpPm2xaXz1YstMgR+5KAd79l2BvXe6Jwlcqf27FWcs2gKlxpu5rx6FpBjpyeW8eBHrdmh1Opj/sxpZsj9d5rnBtwVyO35B++tkZs7Y7Ke5QCb3xlUJbUtMyeZX5cvNWuXLanITXptrtx8+TaILVO+zbcEwMm3LSmJtF7kl2XQK+OX2uZAqbUB8msEnQxukE4Vd6t8dvNmTDWD7/uXKjeZVKLJLctygM3Dn66S2tZZX5t1K5ZVxNYvt+ohyUz5NogtQ77NXQKA85D2h1JrIpBVkl8USCM19A7x/jRrYPDeuHLIe9L0PvH+uOMKeUktzTkFfKNu5LW10heS7T2bzTP3/DOQG6Ist7tr5IaIWw4gQ5PacoBNbz9VJbVtsyeb9SuXm/Urlpt1P/fLDWLT5ObLt0FsWfJtEFtcvm156Vyk/aHUGgAqVLtINIJ4HT+o6/5sjjYrCpVmv8cOt0FFg+z+8ytRyWkcGz/ua//rATZSVhzTXXeD4VWfALRy4FpRJ6645Bxa2DeMgNd9IsFx3TqNKie243Nwrw3njZKbdh5cr/xAtAbe00qcOXXSvPL4w4Hcnr33jhq5yaQSTW5JlwNsHPZkldS2z5liNq5eYTas+jmQG3ptrtxkSDJbvq1/SDJNvs0ekvy5JFHS/uB5s9uZRoBn3X7em/GMt5TUEGhw8TdC3u+KTXpHaHyxXd6PcBteVDDeg2PJe+Q1TWyyDY0xtuP9Nvgb2xGQnxxTymp/oDYiSewjx5V9EPh/Adcgx8V+dp1oPU3sj20u2A/b3DqFfHBcTVJSHlyHlBP5OtlHQ86Da5McoJxHjqWBba3G9WvXzNSJ482gu/5RJTcMTbpyy7IcYOOwx6uktmPuVLNpzapAbBW5odcWDknG59vihyS1fFuiIclQbisWfh/WDmlF0Ca4X0Lt9kTQXrefUzds8D57G551LTeKZ91+3t3jFEFLSQ2ScpF9tAZY9vOBRhnbtUkUqHjcCC7yuq9XIudEQ+4iknXFg/PjdU2iss292QSUx7dNwP4ol01UnaJ8vnPiddywLnI8ty7jzoMHxr7JbbBfq7J39y7z0sCHArkNuvsfNXJLNGNSkduGN6un9O+aN930rF1jNv+yqiI3iK0itwRDkprcfEsA0uTbZEhy5eIfwlohrQbEIl845Uto1LNtvy4jR/YXbYS0YzaSikDgGDgnQutE2M97M57xQs+IytAuUj4IDdmG/7pE7QcgHlQ83ueGfKDut404iWBfX3nwAWOb2/DjmL5eDsA+vnPGlQdo5cG1a9IWcCNrZfJdG9DKiXpEHftwb3IbHK+VQa9tzrRvzFP/+r/65GbNmFz/xsBqqc2fYbb8+ksottWh3FZWDUlqcvMtAUiTb7OHJKPybb07toU1QloNEZDdjmnPKbBfx/vxt/blXNq4KOSLsTuK5j7vccdpBIWeERWqXWRcJWKb1tDG7YfKxfaocI+LfaIkIufUygOwzd0/7pjaPkLcvsB3HQgfOCb2c4m6Nq0sceeJ2q6dvxW5dPGCmfDxB4Hcnr7z9hq5pVkO8MtL91dJbfuaFWbb+l/N1nVrq+SGXpsrt7T5Nogtab7NtwQA0btje1gTpNXQnmP8rbUZ9usiwywjYAKE6D7b7vOe5Dh5U+gZfQ1pXCVim9bQxu3n641EgQ9EuyEEOadWHoBt7v44pjakJ2j7CHHlAVp53JvLxdfDiro2rSxxdRxVDpyrnTh98mSl5yZykxmTSZcDfDHwjmqpbVxvtm1YVxGbJjdfvg1iKyLfdu7smbAGSKuB59F9jnztif26tp8Q164KOIb7bLvPe5Lj5E2hZ/RVZFwlYpvW0Mp+bg5LkG8jvu0a+EC0G0KQc2rlAdjm7i8C0b4VyTCA75zuTaKhlSfq2lEODE1qQw9R16bVjeQEo87jKz/2a0fQc1tZksjwoYNr5IaIWg4w8ZHbq6S2oyQ1iM2Vm4itP9/W32trVL4NYtPybVf/+CO8ctJqaG0q/nafUxkulNflbzdVAqSNiwPHcp9tt71Kcpy8KfSM2gcA4ioR27SGVj4YrXEGaFQhE/Qk7DFn/D9ec8eDgdZw20hZfQ0/trn743xSDrvxx//jNW0fAdeG7Xb5XbTy2NdunxOvyznt1wXtWIJWNyIunMueCCN1jOO5N76Abe0OlgEsmjfHjBr+Vs2MSW05wPiH/l4ttU0bghCxbYfYFLn58m2+IUkt3waxpc23Lf5uZnilpBXR2lT8bT+neM7xfOJ1+xnFc4nXfZO/4sA53Gcbf9uvNeMZL/SM2gcA4ioR23wNLcSE7fhwUJloZG3sD1QqXN6vfUvBdrfhtpGy+sqDbdr+KAcafzm3NPj4L8J3Tns/vA89MBdfedx9464d+I4FfHWD88j1yOcg/9+JPTUfmFiyb/dus3j+XPPF6I/Mq08+WhmaFLl9/sDfqqS2q2eT2bl5oy63iCFJTW4QW5Z8W9SQZE/pvHmAz5rRuLDRtiPcL/9oK+VZ1QJIe5cm7OcdfxdNoWdEBWmNIr7VR4kE26J6Kvhw0Nj73oftaMSxHYH3uvIT8D5fow6krL7yYFvU/hCAlAPnkrJF7QOk7jQZRZUnzbWDqGMlqRv5HOQ82EcrM2jGDd8MjvYdKkVfEFtnT6mS2u4tmwOx7SqJrSI3EVsp3F5bv9wgtqT5tvghSU1u6LUdOXggvIr6kPuP0Ziw0baj3fGBbfLcIkR0QNq7NGE/7x0vNUK6nRt9vVVS27O1JwhbbtJry5Jv8y0B0OTmWwJg59uuXLoUlpx0AxCcjLa0K5QaIQXiSq1325YqsYncooYki8q3rS69rx1AQ4xGGCMD9v+TZKB3hR6VBKQW1bNrdSg1QgrEldre7VsDsblyqxmSVOTmy7dVDUnG5NuqlwBU59v2794Vlrq1weQHNMb4L4bR2r1RLhpJbcjQYbt/IaDUCCmQGqnt2FaOGLmJ2NLm2yC2Sr7N6rUlybf9fvlyWOrWx84D+3LCpDug1AgpEFtqp0Y+bvbt3B6EyK03rdwgtjrzbVVDkqHc1pXeR0g7QqkRUjC21Pbv2lmS2o5quUFsodxqxJYh3+ZbAqDJDWJDnDl5IiwtIe0FpUZIwbhSK4cjtgRDktoSgFT5NmsJgC23dT8vNzf//DMsLSHtBaVGSMH0S+0Jc2D3riCi5JZ6SLIU9eTbjvUdCktKSPtBqRFSMLbUDu7ZXRGbLbeaIUlFbhCbyM0ekozLt/mWAEBuG1evZC+NtDWUGiEFY0vtUO+eQGy63CC2stxEbI3Ot504cjgsJSHtCaVGSMGI1E5Danv3BHGwtyw2W25RQ5JZ8m3+Icmy3LZvXGdu3mQvjbQ3lBohBWNLrW9vbxBZ5ZZHvg1iQ1w8z/VdpP2h1AgpGFtqh/ftrYitIjcMSYZyE7HZcqsn3yZic/Nth0rnJqQToNQIKRiR2qkxLwRSk3B7bZnybb5eW4Tcdm7aaG7evBmWjpD2hlIjpGBOPf7fgdROzhpvjuzfF0SU3PLOt4nYZEjyjytXwpIR0v5QaoQUzG+jhvRL7cD+ithsuYnYksotyZCkJjf+cgjpNCg1QgpGpHZq9gRz9OCBsthi5CZiix6STP6TWwhO3yedCKVGSMG4UqsSmyU3EVtSuYnYkuTb+krHIKQTodQIKRhNaknkJmKz5ZYl39a3r9fc4sQQ0qFQaoQUjEjtdElqxw4drBFbldxCsUXKLcUSgMOl41BopJOh1AgpGFdqEknkJmKz5RY1JNkvtx3BcW7dotBIZ0OpEVIwPqnFiq0OuZ05cbwktFthCQjpXCg1QgomSmoSaeUmYrPlJkOSF377LTwzIZ0PpUZIwYjUTsz9WhWaHZFyC8Xmk9vh/XvNtatXw7MS0h1QaoQUzMXpowOpHV+zVBWZFknkJmJDcLiRdCuUGiEFc2Xp7NRSQ0SKLZTbib4+c/X338MzEdJ9UGqEFExWqUlocsPrl86fZ++MdD2UGiEFU6/UJCCz432HzKULlBkhAqVGSMHkIbWTR4+YK5cuUWaEOFBqhBRMVqmdONxnzp89a65fuxYeiRDiQqkRUjBppHb25Elz+cIFioyQhFBqhBSMLTX0viAuxLnTpwOB4R/t/M+NG+G7CSFpoNQIIYR0DJQaIYSQjoFSI4QQ0jFQaoQQQjoGSo0QQkjHQKkRQgjpGCg1QgghHQOlRgghpGOg1AghhHQMlBohhJAOwZj/B7cyxwGzbTTeAAAAAElFTkSuQmCC">
+    </p>
+    <p style="text-align: center;"><b>خطاب مقدم الطلب واإلقرار بمبلغ التأمين الشهري - الجديد واالضافي</b></p>
+    <p style="text-align: center;"><b>Applicant Declaration And Acknowledgement For <br />
+            Monthly Insurance Amount – New and Top-up</b></p>
+    <table style="margin-top: 10px;">
+        <tbody>
+            <tr>
+                <td>I hereby authorise the Bank, if this application of loan is approved, to
+                    insure, on my behalf and at my own cost, my outstanding liability under
+                    this loan agreement, at any given time. I further authorise the Bank
+                    to debit my account on monthly basis, the required premium inclusive
+                    of the extended tenure, without my further consent and without the
+                    need for prior advice to me. In case pre- closure or pre- settlement of
+                    the loan, the Insurance Company shall not refund the premium to me
+                    since there is no portion of the insurance premium paid in advance.</td>
+                <td>بموجـب هـذا أفـوض البنـك، فـي حـال تمـت الموافقـة علـى طلـب القـرض هـذا،أن يقـوم
+                    بالتأميـن ، بالنيابـة عنـي وعلـى نفقتـي الخاصـة ، علـى المبلـغ المتأخـر فـي ذمتـي بموجـب
+                    اتفاقيــة القــرض، فــي أي وقــت مــن األوقــات. كمــا أفــوض البنــك بــأن يقــوم بالخصــم مــن
+                    ً حســابي علــى أســاس شــهري، قســط التأميــن المطلــوب شــامال فتــرة التمديــد، دون
+                    الحاجــة إلــى الحصــول علــى موافقــة إضافيــة ودون الحاجــة إلــى إخطــاري مســبقًا. فــي
+                    حالـة السـداد أو التسـوية المبكـرة لمبلـغ القـرض ، لـن تقـوم شـركة التأميـن بـرد قسـط
+                    ّ التأميــن إلــي ً نظــر ً ا لعــدم وجــود أي جــزء مــن قســط التأميــن مدفــوع مقدمــا.</td>
+            </tr>
+            <tr>
+                <td>I hereby declare that the Bank has explained to me and I have
+                    understood that the insurance cover will be available only to the
+                    extent of the loan outstanding as on the date of any claim, subject
+                    to my paying the monthly insurance applicable for the total loan
+                    amount. I authorise the bank to extend the insurance cover if needed
+                    and debit my account for the recovery of additional premium as and
+                    when required.</td>
+                <td>بموجــب هــذا أقــر بــأن البنــك قــد شــرح لــي األمــر وفهمــت أن التغطيــة التأمينيــة لــن
+                    تكــون متاحــة إال بمقــدار مبلــغ القــرض غيــر المســدد فــي تاريــخ أي مطالبــة، بشــرط أن
+                    أدفــع التأميــن الشــهري المطبــق علــى إجمالــي مبلــغ القرض.فإننــي أفــوض البنــك بــأن
+                    يقـوم بتوسـيع التغطيـة التأمينيـة إذا لـزم األمـر، والخصـم مـن حسـابي السـترداد قسـط
+                    إضافــي عنــد االقتضــاء.</td>
+            </tr>
+            <tr>
+                <td>I acknowledge that I have opted for the Bank’s arranged insurance
+                    package and hence, waive any right of contestation and remedy on
+                    any grounds other than gross negligence and fraud on the part of
+                    the bank.</td>
+                <td>أقـر بأننـي قـد وافقـت علـى حزمـة الترتيبـات التأميـن التـي أعدهـا البنـك وبالتالـي، أتنـازل
+                    عـن أي حـق لـي فـي الطعـن أو التعويـض ألي سـبب مـن األسـباب غيـر اإلهمـال الجسـيم
+                    واالحتيـال مـن جانـب البنـك.</td>
+            </tr>
+            <tr>
+                <td>I, hereby, declare that the Bank has fully explained the above contents
+                    and I have fully understood and acknowledge that no insurance
+                    refunds will be given to me while choosing the monthly insurance
+                    option</td>
+                <td>بموجــب هــذا أقــر أن البنــك قــام بتوضيــح المحتويــات المذكــورة أعــاه بالكامــل، حيــث
+                    فهمتهــا بالكامــل وأقــر بأنــه لــن يتــم إعطائــي أيــة مبالــغ مســتردة مــن التأميــن عنــد
+                    اختيــاري لخيــار التأميــن الشــهري.</td>
+            </tr>
+            <tr>
+                <td>I am aware that any instalment deferment on my loan will result in
+                    an increase in the repayment period and insurance amount for the
+                    extended period</td>
+                <td>علــم بــأن أي تأجيــل فــي قســط القــرض ســيؤدي إلــى زيــادة فتــرة الســداد ومبلــغ
+                    التأميــن لفتــرة التمديــد.</td>
+            </tr>
+            <tr>
+                <td>In case of a Top-up additional loan option, I hereby acknowledge
+                    and agree that the insurance premium of my original loan will be
+                    applicable till the maturity of the earlier loan and the Bank will start
+                    calculating and charging the insurance premium on monthly basis for
+                    the top-up amount till the maturity of the loan.</td>
+                <td>فــي حالــة قــرض االضافــي، أقــر وأوافــق علــى أن قســط التأميــن للقــرض األصلــي الخــاص
+                    بـي سـيكون قابـ ًا للتطبيـق حتـى تاريـخ اسـتحقاق القـرض السـابق وسـيبدأ البنـك فـي
+                    احتسـاب أقسـاط التأميـن علـى أسـاس شـهري لمبلـغ القـرض الزائـد االضافـي حتـى مـدة
+                    اسـتحقاق القـرض.</td>
+            </tr>
+            <tr>
+                <td>In case of a Top-up merger option, I hereby acknowledge and agree
+                    that my existing loan will be closed and the Bank will start calculating
+                    and charging the insurance premium on monthly basis for the total
+                    revised loan amount till the maturity of the loan and I agree to accept
+                    the refunds as calculated by the insurance company based on the
+                    actuarial calculation for the un-expired period since I am pre-closing
+                    my existing loan and changing my premium payment mode from
+                    upfront to monthly.</td>
+                <td>فــي حالــة دمــج القــرض ، أقــر وأوافــق بموجبــه علــى أن ســيتم إغــاق القــرض الحالــي
+                    وسـيقوم البنـك فـي احتسـاب أقسـاط التأميـن شـهريا مـن اجمالـى مبلـغ القـرض الجديد
+                    مـدة اسـتحقاق القـرض، وأنـا أقـر وأوافـق علـى المبلـغ المسـترجع مـن قبـل شـركة التأمين
+                    ً بنـاء علـى الحسـاب االكتـواري للفتـرة اغـاق القـرض الحالـي الـى الفترةالمتبقية،واقـر اننـي
+                    ّ طلبــت بتغييــر دفــع االقســاط التأميــن الخــاص بــي مــن مدفــوع مســبقا إلــى اقســاط
+                    شـهريا.</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding-top:10px;"></td>
+            </tr>
+            <tr>
+                <td>
+                    <table border="1" style="height: 180px;">
+                        <tr>
+                            <td>Authorization to debit my/our
+                                account for credit life insurance
+                                amount for the loan amount
+                                taken</td>
+                            <td style="direction: ltr;">Monthly Insurance Amount
+                                (OMR)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Place a monthly debit instruction
+                                in my current/savings account
+                                to collect the life insurance
+                                payments</td>
+                            <td style="direction: ltr;"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table border="1" style="height: 180px;">
+                        <tr>
+                            <td style="direction: rtl;">التفويــض بالخصــم مــن حســابي مبلــغ
+                                التأميــن علــى الحيــاة االئتمانيــة لمبلــغ
+                                القــرض الممنــوح
+
+                            </td>
+                            <td>مبلغ التأمين الشهري
+                                (ريال عماني)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="direction: rtl;">ضــع تعليمــات الخصــم الشــهري مــن
+                                حســابي الجــاري / حســاب التوفيــر
+                                لتحصيــل دفعــات التأميــن علــى الحيــاة</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Customer Name : <span class="bb" style="width: 60%;"></span></td>
+                <td>إسم العميل : <span class="bb" style="width: 60%;"></span></td>
+            </tr>
+            <tr>
+                <td>Signature of the Applicant : <span class="bb" style="width: 50%;"></span></td>
+                <td>توقيع مقدم الطلب : <span class="bb" style="width: 60%;"></span></td>
+            </tr>
+            <tr>
+                <td>Date : <span class="bb" style="width: 80%;"></span></td>
+                <td>التاريخ : <span class="bb" style="width: 80%;"></span></td>
+            </tr>
+            <tr>
+                <td>Signature Verified : <span class="bb" style="width: 60%;"></span></td>
+                <td>فحص التوقيع : <span class="bb" style="width: 60%;"></span></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
